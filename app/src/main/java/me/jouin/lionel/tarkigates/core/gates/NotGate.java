@@ -10,5 +10,8 @@ public class NotGate implements Component {
 	public boolean out() {
 		return !in.out();
 	}
-	
+
+	public Component getIn() {
+		return in;
+	}
 }

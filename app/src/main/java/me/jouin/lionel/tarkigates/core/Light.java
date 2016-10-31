@@ -19,4 +19,7 @@ public class Light implements Component {
 		return "La lampe est "+(in.out() ? "allum�" : "eteinte");
 	}
 
+	public Component getIn() {
+		return in;
+	}
 }

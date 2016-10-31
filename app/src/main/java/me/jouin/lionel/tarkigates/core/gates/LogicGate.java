@@ -14,5 +14,12 @@ public abstract class LogicGate implements Component {
 	public void setInB(Component c) {
 		inB = c;
 	}
-	
+
+	public Component getInA() {
+		return inA;
+	}
+
+	public Component getInB() {
+		return inB;
+	}
 }
