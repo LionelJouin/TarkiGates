@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import me.jouin.lionel.tarkigates.levels.Level;
 import me.jouin.lionel.tarkigates.levels.Level_1;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Level level_1 = new Level_1();
 
         if (level_1.isValid()) {
+
             gameView = new GameView(this, level_1);
             gameView.setBackgroundColor(Color.WHITE);
 
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
             wv.addView(gameView);
             wv.addView(new Button(this));
             setContentView(wv);
+        } else {
+            Toast.makeText(getApplicationContext(), "Level invalide", Toast.LENGTH_LONG).show();
         }
 
     }

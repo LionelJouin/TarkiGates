@@ -31,7 +31,8 @@ public class Level_1 extends Level {
 
         l.setIn(g3);
 
-        checkLevel();
+        setLight(l);
+
     }
 
 }

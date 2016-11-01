@@ -13,15 +13,14 @@ import me.jouin.lionel.tarkigates.core.gates.NotGate;
  * Created by lione on 31/10/2016.
  */
 
-public class Level {
+public abstract class Level {
 
     protected Light light;
     protected boolean isValid;
     protected int nbSwitchs;
 
     public Level(Light light) {
-        this.light = light;
-        checkLevel();
+        setLight(light);
     }
 
     public boolean isValid() {
@@ -32,9 +31,15 @@ public class Level {
         return nbSwitchs;
     }
 
-    protected void checkLevel() {
+    public void setLight(Light light) {
+        this.light = light;
+        checkLevel();
+    }
+
+    protected boolean checkLevel() {
         List<Component> alreadyChecked = new ArrayList<>();
         isValid = countSwitchAndIsAValidLevel(light, alreadyChecked);
+        return isValid;
     }
 
     private boolean countSwitchAndIsAValidLevel(Component c, List<Component> alreadyChecked) {
