@@ -6,8 +6,11 @@ package me.jouin.lionel.tarkigates;
 
 public class Positions {
 
-    public int spaceBetweenComponents = 10;
-    public int switchSize = 50;
+    public int spaceBetweenComponents = 200;
+    public int switchSize = 200;
+
+    public int logicGateHeight = 100;
+    public int logicGateWidth = 200;
 
     public Positions() {
 

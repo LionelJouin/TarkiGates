@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
             WebView wv = new WebView(this);
             int height = level_1.getNbSwitchs() * positions.switchSize + (level_1.getNbSwitchs() + 2) * positions.spaceBetweenComponents;
-            wv.loadData("<html style='height:" + height + "px;width:3050px;'>htryy</html>", "text/html; charset=utf-8", "UTF-8");
+            //wv.loadData("<html style='height:" + height + "px;width:3050px;'>htryy</html>", "text/html; charset=utf-8", "UTF-8");
+            wv.loadData("<html style='height:3000px;width:3050px;'>htryy</html>", "text/html; charset=utf-8", "UTF-8");
             wv.addView(gameView);
             setContentView(wv);
         } else {

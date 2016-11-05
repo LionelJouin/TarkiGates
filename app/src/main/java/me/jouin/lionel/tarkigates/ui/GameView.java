@@ -1,6 +1,8 @@
 package me.jouin.lionel.tarkigates.ui;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -32,12 +34,19 @@ public class GameView extends RelativeLayout {
         this.context = context;
 
         ImageView light = new ImageView(context);
-        light.setImageResource(R.drawable.and);
+        //light.setImageResource(R.drawable.and);
+        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.and);
+        bmp = Bitmap.createScaledBitmap(bmp, MainActivity.positions.logicGateWidth, MainActivity.positions.logicGateHeight, true);
+        light.setImageBitmap(bmp);
+        //light.setLayoutParams(new RelativeLayout.LayoutParams(MainActivity.positions.switchSize, MainActivity.positions.switchSize));
+        light.setY(300);
+        light.setX(300);
         addView(light);
 
         for (int i = 0;i<level.getNbSwitchs();i++) {
             Button b = new Button(context);
             buttons.add(b);
+            b.setLayoutParams(new RelativeLayout.LayoutParams(MainActivity.positions.switchSize, MainActivity.positions.switchSize));
             b.setY((MainActivity.positions.spaceBetweenComponents+MainActivity.positions.switchSize)*i);
             b.setText(""+i);
             addView(b);
