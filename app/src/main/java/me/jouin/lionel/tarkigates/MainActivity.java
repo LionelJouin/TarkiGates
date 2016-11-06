@@ -12,14 +12,14 @@ import me.jouin.lionel.tarkigates.ui.GameView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final Positions positions = new Positions();
-
-    public GameView gameView;
-    public Level level_1;
+    private GameView gameView;
+    private Level level_1;
+    private WebView wv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         level_1 = new Level_1();
@@ -28,20 +28,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
+        Positions.getInstance(this);
+
         super.onWindowFocusChanged(hasFocus);
         if (level_1.isValid()) {
+
+            Positions.getInstance().setLevelPositions(level_1);
 
             gameView = new GameView(this, level_1);
             gameView.setBackgroundColor(Color.WHITE);
 
             WebView wv = new WebView(this);
-            int height = level_1.getNbSwitchs() * positions.switchSize + (level_1.getNbSwitchs() + 2) * positions.spaceBetweenComponents;
-            //wv.loadData("<html style='height:" + height + "px;width:3050px;'>htryy</html>", "text/html; charset=utf-8", "UTF-8");
-            wv.loadData("<html style='height:3000px;width:3050px;'>htryy</html>", "text/html; charset=utf-8", "UTF-8");
+            wv.setInitialScale(100);
+            //wv.setLayoutParams(new RelativeLayout.LayoutParams(Positions.getInstance().actualLevelHeight, Positions.getInstance().actualLevelHeight-200));
+            wv.loadData("<html>" +
+                    "<header><meta name='viewport' content='width=device-width, initial-scale=1' /></header>" +
+                    "<body style='margin: 0; padding: 0;height:"+Positions.getInstance().actualLevelHeight+";width:"+Positions.getInstance().actualLevelWidth+"px;'>" +
+                    //"<div style='height:"+Positions.getInstance().actualLevelHeight+"px;width:"+Positions.getInstance().actualLevelWidth+"px;background:red;'></div>" +
+                    "</body>" +
+                    "</html>", "text/html; charset=utf-8", "UTF-8");
             wv.addView(gameView);
             setContentView(wv);
         } else {
             Toast.makeText(getApplicationContext(), "Level invalide", Toast.LENGTH_LONG).show();
         }
     }
+
 }

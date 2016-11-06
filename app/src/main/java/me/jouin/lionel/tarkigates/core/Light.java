@@ -16,7 +16,7 @@ public class Light implements Component {
 	@Override
 	public String toString() {
 		
-		return "La lampe est "+(in.out() ? "allum�" : "eteinte");
+		return "La lampe est "+(in.out() ? "allumé" : "eteinte");
 	}
 
 	public Component getIn() {

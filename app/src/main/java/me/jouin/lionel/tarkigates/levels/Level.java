@@ -36,6 +36,10 @@ public abstract class Level {
         checkLevel();
     }
 
+    public Light getLight() {
+        return light;
+    }
+
     protected boolean checkLevel() {
         List<Component> alreadyChecked = new ArrayList<>();
         isValid = countSwitchAndIsAValidLevel(light, alreadyChecked);
