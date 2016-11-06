@@ -27,6 +27,7 @@ public class Positions {
 
     public int spaceBetweenComponentsX;
     public int spaceBetweenComponentsY;
+    public int componentSize;
     public int switchSize;
     public int lightSize;
 
@@ -50,10 +51,13 @@ public class Positions {
 
         spaceBetweenComponentsX = dpToPx(defaultSize, mainActivity);
         spaceBetweenComponentsY = dpToPx(defaultSize, mainActivity);
+
+        componentSize = dpToPx(defaultSize, mainActivity);
         switchSize = dpToPx(defaultSize, mainActivity);
         lightSize = dpToPx(defaultSize, mainActivity);
 
-        logicGateHeight = (int) Math.round(dpToPx(defaultSize, mainActivity)*0.5);
+        //logicGateHeight = (int) Math.round(dpToPx(defaultSize, mainActivity)*0.5);
+        logicGateHeight = dpToPx(defaultSize, mainActivity);
         logicGateWidth = dpToPx(defaultSize, mainActivity);
 
     }

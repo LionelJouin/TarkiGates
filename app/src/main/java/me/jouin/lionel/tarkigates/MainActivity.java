@@ -6,14 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import me.jouin.lionel.tarkigates.levels.Level;
-import me.jouin.lionel.tarkigates.levels.Level_1;
+import me.jouin.lionel.tarkigates.levels.*;
 import me.jouin.lionel.tarkigates.ui.GameView;
 
 public class MainActivity extends AppCompatActivity {
 
     private GameView gameView;
-    private Level level_1;
+    private Level level;
     private WebView wv;
 
     @Override
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        level_1 = new Level_1();
+        level = new Level_3();
 
     }
 
@@ -31,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
         Positions.getInstance(this);
 
         super.onWindowFocusChanged(hasFocus);
-        if (level_1.isValid()) {
+        if (level.isValid()) {
 
-            Positions.getInstance().setLevelPositions(level_1);
+            Positions.getInstance().setLevelPositions(level);
 
-            gameView = new GameView(this, level_1);
+            gameView = new GameView(this, level);
             gameView.setBackgroundColor(Color.WHITE);
 
-            WebView wv = new WebView(this);
+            wv = new WebView(this);
             wv.setInitialScale(100);
             //wv.setLayoutParams(new RelativeLayout.LayoutParams(Positions.getInstance().actualLevelHeight, Positions.getInstance().actualLevelHeight-200));
             wv.loadData("<html>" +

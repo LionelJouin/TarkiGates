@@ -100,17 +100,15 @@ public class GameView extends RelativeLayout {
 
     /*
     state = colonne & nombre de composants par colonne
-    stateColumns.get(state) = ligne -1
+    stateColumns.get(state) = ligne - 1
      */
     private void setComponents(Component c, ComponentUI cParentUI, int state) {
         if (!alreadyChecked.contains(c)) {
             alreadyChecked.add(c);
             ComponentUI componentUI = null;
-            //int x = cParentUI.x-Positions.getInstance().spaceBetweenComponentsX*(state+1)-cParentUI.width;
             int x = cParentUI.x - Positions.getInstance().spaceBetweenComponentsX - cParentUI.width;
             if (!(c instanceof NotGate))
                 setStateColumns(state);
-            //int y = Positions.getInstance().spaceBetweenComponentsX * stateColumns.get(state);
             int y = 0;
 
             if (c instanceof LogicGate) {
@@ -146,6 +144,8 @@ public class GameView extends RelativeLayout {
                 componentUI = new NotGateUI(x, y);
             } else if (c instanceof Switch) {
                 componentUI = new SwitchUI(x, y);
+                setComponentPosition(componentUI, state);
+                setStateColumns(state+1); // fix les holes provoqués par le fait que les switchs ne soient pas obligatoirement au meme niveau
                 Button b = new Button(context);
                 b.setLayoutParams(new RelativeLayout.LayoutParams(componentUI.width, componentUI.height));
                 b.setY(componentUI.y);
@@ -159,9 +159,12 @@ public class GameView extends RelativeLayout {
     private void setComponentPosition(ComponentUI componentUI, int state) {
         if (state%2 == 1 && (stateColumns.get(state)+1) == (int) Math.ceil((double) state/2)) { // milieu
             componentUI.y = Positions.getInstance().realLevelHeight / 2 - componentUI.height / 2;
-        } else if (stateColumns.get(state) > ((state+1)/2)+1) { // base
-
+        } else if ((stateColumns.get(state)+1) > (int) Math.ceil((double) state/2)) { // base
+            setHeightBottomColumns(state);
+            componentUI.y = heightBottomColumns.get(state);
         } else { // haut
+            setHeightTopColumns(state);
+            componentUI.y = heightTopColumns.get(state);
         }
     }
 
@@ -170,6 +173,28 @@ public class GameView extends RelativeLayout {
             stateColumns.put(state, stateColumns.get(state)+1);
         } else {
             stateColumns.put(state, 0);
+        }
+    }
+
+    private void setHeightBottomColumns(int state) {
+        if(heightBottomColumns.get(state) != null) {
+            heightBottomColumns.put(state, heightBottomColumns.get(state)+Positions.getInstance().componentSize+Positions.getInstance().spaceBetweenComponentsY);
+        } else {
+            if (state%2 == 1)
+                heightBottomColumns.put(state, Positions.getInstance().lightY+Positions.getInstance().lightSize+Positions.getInstance().spaceBetweenComponentsY);
+            else
+                heightBottomColumns.put(state, Positions.getInstance().lightY+Positions.getInstance().lightSize);
+        }
+    }
+
+    private void setHeightTopColumns(int state) {
+        if(heightTopColumns.get(state) != null) {
+            heightTopColumns.put(state, heightTopColumns.get(state)-Positions.getInstance().componentSize-Positions.getInstance().spaceBetweenComponentsY);
+        } else {
+            if (state%2 == 1)
+                heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize-Positions.getInstance().spaceBetweenComponentsY);
+            else
+                heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize);
         }
     }
 
