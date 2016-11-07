@@ -1,6 +1,7 @@
 package me.jouin.lionel.tarkigates.ui.gates;
 
 import me.jouin.lionel.tarkigates.R;
+import me.jouin.lionel.tarkigates.core.Component;
 
 /**
  * Created by lione on 05/11/2016.

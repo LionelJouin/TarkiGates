@@ -10,7 +10,10 @@ import android.graphics.Paint;
 
 public class WireUI {
 
+    public int wireThickness = 5;
+
     public int color = Color.BLACK;
+    public int colorActivated = Color.RED;
 
     public int startX;
     public int startY;
@@ -24,9 +27,25 @@ public class WireUI {
         this.stopY = stopY;
     }
 
+    public void draw(Canvas canvas, Paint paint, boolean state) {
+        if (!state)
+            paint.setColor(color);
+        else {
+            paint.setColor(colorActivated);
+        }
+
+        paint.setStrokeWidth(wireThickness);
+        if (startY != stopY) {
+            canvas.drawLine(startX, startY, (stopX+startX)/2+(wireThickness/2), startY, paint);
+            canvas.drawLine((stopX+startX)/2, startY, (stopX+startX)/2, stopY, paint);
+            canvas.drawLine((stopX+startX)/2-(wireThickness/2), stopY, stopX, stopY, paint);
+        } else {
+            canvas.drawLine(startX, startY, stopX, stopY, paint);
+        }
+    }
+
     public void draw(Canvas canvas, Paint paint) {
-        paint.setColor(color);
-        canvas.drawLine(startX, startY, stopX, stopY, paint);
+        draw(canvas, paint, false);
     }
 
 }

@@ -44,11 +44,13 @@ public class GameView extends RelativeLayout {
     private Paint paint = new Paint();
     private Level level;
     private Context context;
-    //private List<Button> buttons = new ArrayList<>();
     private Map<Integer, Integer> stateColumns;
     private Map<Integer, Integer> heightTopColumns;
     private Map<Integer, Integer> heightBottomColumns;
     private List<Component> alreadyChecked;
+
+    private Map<Component, ComponentUI> components;
+
 
 
     public GameView(Context context, Level level) {
@@ -57,28 +59,15 @@ public class GameView extends RelativeLayout {
         this.context = context;
 
         setLight(level.getLight());
-        /*
-        ImageView light = new ImageView(context);
-        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.light);
-        //bmp = Bitmap.createScaledBitmap(bmp, MainActivity.positions.logicGateWidth, MainActivity.positions.logicGateHeight, true);
-        bmp = Bitmap.createScaledBitmap(bmp, Positions.getInstance().switchSize, Positions.getInstance().switchSize, true);
-        light.setImageBitmap(bmp);
-        light.setY(300);
-        light.setX(300);
-        addView(light);
-        */
-        /*
-        for (int i = 0;i<level.getNbSwitchs();i++) {
-            Button b = new Button(context);
-            buttons.add(b);
-            b.setLayoutParams(new RelativeLayout.LayoutParams(Positions.getInstance().switchSize, Positions.getInstance().switchSize));
-            b.setY((Positions.getInstance().spaceBetweenComponents+ Positions.getInstance().switchSize)*i);
-            b.setText(Integer.toString(i));
-            addView(b);
-        }
-        */
+        setWires();
 
-        RelativeLayout.LayoutParams a = new RelativeLayout.LayoutParams(Positions.getInstance().actualLevelWidth, Positions.getInstance().actualLevelHeight);
+        for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
+            if (c.getKey() instanceof Switch) {
+
+            }
+        }
+
+        LayoutParams a = new LayoutParams(Positions.getInstance().actualLevelWidth, Positions.getInstance().actualLevelHeight);
         this.setLayoutParams(a);
     }
 
@@ -95,6 +84,8 @@ public class GameView extends RelativeLayout {
         alreadyChecked = new ArrayList<>();
         heightTopColumns = new HashMap<>();
         heightBottomColumns = new HashMap<>();
+        components = new HashMap<>();
+        components.put(light, lightUI);
         setComponents(light.getIn(), lightUI, 1);
     }
 
@@ -137,6 +128,8 @@ public class GameView extends RelativeLayout {
                     addView(componentImageView);
                     LogicGate component = (LogicGate) c;
 
+                    components.put(component, componentUI);
+
                     setComponents(component.getInA(), componentUI, state + 1);
                     setComponents(component.getInB(), componentUI, state + 1);
                 }
@@ -145,13 +138,16 @@ public class GameView extends RelativeLayout {
             } else if (c instanceof Switch) {
                 componentUI = new SwitchUI(x, y);
                 setComponentPosition(componentUI, state);
-                setStateColumns(state+1); // fix les holes provoqués par le fait que les switchs ne soient pas obligatoirement au meme niveau
+                setStateColumns(state + 1); // fix les holes provoqués par le fait que les switchs ne soient pas obligatoirement au meme niveau
                 Button b = new Button(context);
-                b.setLayoutParams(new RelativeLayout.LayoutParams(componentUI.width, componentUI.height));
+                b.setLayoutParams(new LayoutParams(componentUI.width, componentUI.height));
                 b.setY(componentUI.y);
                 b.setX(componentUI.x);
                 b.setText("k");
                 addView(b);
+
+                Switch component = (Switch) c;
+                components.put(component, componentUI);
             }
         }
     }
@@ -198,22 +194,62 @@ public class GameView extends RelativeLayout {
         }
     }
 
+    public void setWires() {
+        for(Map.Entry<Component, ComponentUI> c : components.entrySet()) {
+            if (c.getKey() instanceof LogicGate) {
+
+                Component component = ((LogicGate) c.getKey()).getInA();
+                ComponentUI cUI = components.get(component);
+                if (cUI != null)
+                    c.getValue().addWires(cUI.getOutX(), cUI.getOutY());
+
+                component = ((LogicGate) c.getKey()).getInB();
+                cUI = components.get(component);
+                if (cUI != null)
+                    c.getValue().addWires(cUI.getOutX(), cUI.getOutY());
+
+            } else if (c.getKey() instanceof NotGate) {
+            } else if (c.getKey() instanceof Light) {
+                Component component = ((Light) c.getKey()).getIn();
+                ComponentUI cUI = components.get(component);
+                if (cUI != null)
+                    c.getValue().addWires(cUI.getOutX(), cUI.getOutY());
+            }
+        }
+    }
+
     @Override
     public void onDraw(Canvas canvas) {
 
-        /*
-        paint.setColor(Color.GREEN);
-        canvas.drawRect(30, 30, 90, 200, paint);
-        paint.setColor(Color.BLUE);
+        for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
+            if (c.getKey() instanceof LogicGate) {
 
-        canvas.drawLine(100, 20, 100, 1900, paint);
+                Component component = ((LogicGate) c.getKey()).getInA();
+                if (component.out())
+                    c.getValue().wires.get(0).draw(canvas, paint, true);
+                else
+                    c.getValue().wires.get(0).draw(canvas, paint);
 
-        paint.setColor(Color.GREEN);
-        canvas.drawRect(200, 2000, 400, 3000, paint);
+                System.out.println("koukou "+component+" : "+component.out());
 
-        paint.setColor(Color.CYAN);
-        canvas.drawRect(300, 2000, 1500, 3000, paint);
-        */
+                component = ((LogicGate) c.getKey()).getInB();
+                if (component.out())
+                    c.getValue().wires.get(1).draw(canvas, paint, true);
+                else
+                    c.getValue().wires.get(1).draw(canvas, paint);
+
+                System.out.println("koukou "+component);
+            } else if (c.getKey() instanceof NotGate) {
+                c.getValue().wires.get(0).draw(canvas, paint);
+            } else if (c.getKey() instanceof Light) {
+                Component component = ((Light) c.getKey()).getIn();
+                if (component.out())
+                    c.getValue().wires.get(0).draw(canvas, paint, true);
+                else
+                    c.getValue().wires.get(0).draw(canvas, paint);
+            }
+        }
+
     }
 
 }
