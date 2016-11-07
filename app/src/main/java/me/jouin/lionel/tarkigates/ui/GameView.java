@@ -185,12 +185,19 @@ public class GameView extends RelativeLayout {
 
     private void setHeightTopColumns(int state) {
         if(heightTopColumns.get(state) != null) {
-            heightTopColumns.put(state, heightTopColumns.get(state)-Positions.getInstance().componentSize-Positions.getInstance().spaceBetweenComponentsY);
+            //heightTopColumns.put(state, heightTopColumns.get(state)-Positions.getInstance().componentSize-Positions.getInstance().spaceBetweenComponentsY);
+            heightTopColumns.put(state, heightTopColumns.get(state)+Positions.getInstance().componentSize+Positions.getInstance().spaceBetweenComponentsY);
         } else {
+            if (state%2 == 1)
+                heightTopColumns.put(state, Positions.getInstance().lightY-(Positions.getInstance().lightSize+Positions.getInstance().spaceBetweenComponentsY)*(int) Math.floor(state/2));
+            else
+                heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize*state/2);
+            /*
             if (state%2 == 1)
                 heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize-Positions.getInstance().spaceBetweenComponentsY);
             else
                 heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize);
+            */
         }
     }
 
