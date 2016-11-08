@@ -20,11 +20,11 @@ public abstract class LogicGateUI extends ComponentUI {
         super(x, y);
         height = Positions.getInstance().logicGateHeight;
         width = Positions.getInstance().logicGateWidth;
-        inAX = 0;
+        inAX = (int) Math.round(width*0.31);
         inAY = (int) Math.round(height*0.40);
-        inBX = 0;
+        inBX = (int) Math.round(width*0.31);
         inBY = (int) Math.round(height*0.60);
-        outX = width;
+        outX = (int) Math.round(width*0.69);
         outY = height/2;
     }
 

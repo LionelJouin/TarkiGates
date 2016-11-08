@@ -18,11 +18,11 @@ public class NotGateUI extends ComponentUI {
         super(x, y);
         imgId = R.drawable.not;
         imgIdActivated = R.drawable.not;
-        height = Positions.getInstance().logicGateHeight;
-        width = Positions.getInstance().logicGateWidth;
-        inX = 0;
+        height = Positions.getInstance().notGateHeight;
+        width = Positions.getInstance().notGateWidth;
+        inX = (int) Math.round(width*0.30);
         inY = height/2;
-        outX = width;
+        outX = (int) Math.round(width*0.84);
         outY = height/2;
     }
 

@@ -12,8 +12,8 @@ public class WireUI {
 
     public int wireThickness = 5;
 
-    public int color = Color.BLACK;
-    public int colorActivated = Color.RED;
+    public int color = Color.parseColor("#2c3e50");
+    public int colorActivated = Color.parseColor("#e74c3c");
 
     public int startX;
     public int startY;

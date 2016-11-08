@@ -28,6 +28,7 @@ import me.jouin.lionel.tarkigates.core.gates.XnorGate;
 import me.jouin.lionel.tarkigates.core.gates.XorGate;
 import me.jouin.lionel.tarkigates.levels.Level;
 import me.jouin.lionel.tarkigates.ui.gates.AndGateUI;
+import me.jouin.lionel.tarkigates.ui.gates.LogicGateUI;
 import me.jouin.lionel.tarkigates.ui.gates.NandGateUI;
 import me.jouin.lionel.tarkigates.ui.gates.NorGateUI;
 import me.jouin.lionel.tarkigates.ui.gates.NotGateUI;
@@ -59,6 +60,7 @@ public class GameView extends RelativeLayout {
         this.context = context;
 
         setLight(level.getLight());
+        repositioning();
         setWires();
 
         for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
@@ -141,13 +143,36 @@ public class GameView extends RelativeLayout {
                     setComponents(component.getInB(), componentUI, state + 1);
                 }
             } else if (c instanceof NotGate) {
-                componentUI = new NotGateUI(x, y);
+
+                Component componentBefore = getComponentBefore(c);
+                if (componentBefore instanceof LogicGate) {
+                    LogicGate componentBeforeLogicGate = (LogicGate) componentBefore;
+                    LogicGateUI componentBeforeLogicGateUI = (LogicGateUI) components.get(componentBeforeLogicGate);
+                    if (c.equals(componentBeforeLogicGate.getInA()))
+                        y = componentBeforeLogicGateUI.getInAX();
+                    else if (c.equals(componentBeforeLogicGate.getInB()))
+                        y = componentBeforeLogicGateUI.getInBY();
+                } else if (componentBefore instanceof NotGate) {
+                    NotGate componentBeforeNotGate = (NotGate) componentBefore;
+                    NotGateUI componentBeforeNotGateUI = (NotGateUI) components.get(componentBeforeNotGate);
+                    y = componentBeforeNotGateUI.getInY();
+                } else if (componentBefore instanceof Light) {
+                    Light componentBeforeLight = (Light) componentBefore;
+                    LightUI componentBeforeLightUI = (LightUI) components.get(componentBeforeLight);
+                    y = componentBeforeLightUI.getInY();
+                }
+
+                componentUI = new NotGateUI(cParentUI.x, y);
+                componentUI.x = componentUI.x-componentUI.width;
+                componentUI.y = componentUI.y-componentUI.width/2;
+
                 ImageView componentImageView = new ImageView(context);
                 Bitmap bmp = BitmapFactory.decodeResource(getResources(), componentUI.imgId);
                 bmp = Bitmap.createScaledBitmap(bmp, componentUI.width, componentUI.height, true);
                 componentImageView.setImageBitmap(bmp);
                 componentImageView.setY(componentUI.y);
                 componentImageView.setX(componentUI.x);
+                addView(componentImageView);
                 NotGate component = (NotGate) c;
 
                 components.put(component, componentUI);
@@ -243,6 +268,59 @@ public class GameView extends RelativeLayout {
         }
     }
 
+    public Component getComponentBefore(Component component) {
+        for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
+            if (c.getKey() instanceof LogicGate) {
+                if(((LogicGate) c.getKey()).getInA().equals(component) || ((LogicGate) c.getKey()).getInB().equals(component))
+                    return c.getKey();
+            } else if (c.getKey() instanceof NotGate) {
+                if(((NotGate) c.getKey()).getIn().equals(component))
+                    return c.getKey();
+            } else if (c.getKey() instanceof Light) {
+                if (((Light) c.getKey()).getIn().equals(component))
+                    return c.getKey();
+            }
+        }
+        return null;
+    }
+
+    public void repositioning() {
+        int height = 0;
+        int width = 0;
+
+        Integer xMax = null;
+        Integer xMin = null;
+        Integer yMax = null;
+        Integer yMin = null;
+
+        for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
+            int currentXMin = c.getValue().x;
+            int currentXMax = currentXMin+c.getValue().width;
+            int currentYMin = c.getValue().y;
+            int currentYMax = currentYMin+c.getValue().height;
+            if (xMax == null && xMin == null && yMax == null && yMin == null) {
+                xMax = currentXMax;
+                xMin = currentXMin;
+                yMax = currentYMax;
+                yMin = currentYMin;
+            } else {
+                if (currentXMax > xMax)
+                    xMax = currentXMax;
+                if (currentXMin < xMin)
+                    xMin = currentXMin;
+                if (currentYMin > yMax)
+                    yMax = currentYMin;
+                if (currentYMax < yMin)
+                    yMin = currentYMax;
+            }
+        }
+
+        if (xMax != null && xMin != null && yMax != null && yMin != null) {
+            height = xMax - xMin;
+            width = yMax - yMin;
+        }
+    }
+
     @Override
     public void onDraw(Canvas canvas) {
 
@@ -262,7 +340,11 @@ public class GameView extends RelativeLayout {
                     c.getValue().wires.get(1).draw(canvas, paint);
 
             } else if (c.getKey() instanceof NotGate) {
-                c.getValue().wires.get(0).draw(canvas, paint);
+                Component component = ((NotGate) c.getKey()).getIn();
+                if (component.out())
+                    c.getValue().wires.get(0).draw(canvas, paint, true);
+                else
+                    c.getValue().wires.get(0).draw(canvas, paint);
             } else if (c.getKey() instanceof Light) {
                 Component component = ((Light) c.getKey()).getIn();
                 if (component.out())

@@ -62,8 +62,8 @@ public class Positions {
         logicGateHeight = dpToPx(defaultSize, mainActivity);
         logicGateWidth = dpToPx(defaultSize, mainActivity);
 
-        notGateHeight = dpToPx((int) (defaultSize*.2), mainActivity);
-        notGateWidth = dpToPx((int) (defaultSize*.2), mainActivity);
+        notGateHeight = dpToPx((int) (defaultSize*.5), mainActivity);
+        notGateWidth = dpToPx((int) (defaultSize*.5), mainActivity);
 
     }
 
