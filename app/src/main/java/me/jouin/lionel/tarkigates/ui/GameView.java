@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -63,7 +63,15 @@ public class GameView extends RelativeLayout {
 
         for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
             if (c.getKey() instanceof Switch) {
-
+                SwitchUI sUI = (SwitchUI) c.getValue();
+                final Switch key = (Switch) c.getKey();
+                sUI.switchButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        key.changeState();
+                        invalidate();
+                    }
+                });
             }
         }
 
@@ -122,7 +130,6 @@ public class GameView extends RelativeLayout {
                     Bitmap bmp = BitmapFactory.decodeResource(getResources(), componentUI.imgId);
                     bmp = Bitmap.createScaledBitmap(bmp, componentUI.width, componentUI.height, true);
                     componentImageView.setImageBitmap(bmp);
-                    componentImageView.setImageBitmap(bmp);
                     componentImageView.setY(componentUI.y);
                     componentImageView.setX(componentUI.x);
                     addView(componentImageView);
@@ -135,16 +142,25 @@ public class GameView extends RelativeLayout {
                 }
             } else if (c instanceof NotGate) {
                 componentUI = new NotGateUI(x, y);
+                ImageView componentImageView = new ImageView(context);
+                Bitmap bmp = BitmapFactory.decodeResource(getResources(), componentUI.imgId);
+                bmp = Bitmap.createScaledBitmap(bmp, componentUI.width, componentUI.height, true);
+                componentImageView.setImageBitmap(bmp);
+                componentImageView.setY(componentUI.y);
+                componentImageView.setX(componentUI.x);
+                NotGate component = (NotGate) c;
+
+                components.put(component, componentUI);
+
+                setComponents(component.getIn(), componentUI, state);
             } else if (c instanceof Switch) {
                 componentUI = new SwitchUI(x, y);
                 setComponentPosition(componentUI, state);
                 setStateColumns(state + 1); // fix les holes provoqués par le fait que les switchs ne soient pas obligatoirement au meme niveau
-                Button b = new Button(context);
-                b.setLayoutParams(new LayoutParams(componentUI.width, componentUI.height));
-                b.setY(componentUI.y);
-                b.setX(componentUI.x);
-                b.setText("k");
-                addView(b);
+                SwitchUI sUI = (SwitchUI) componentUI;
+
+                sUI.setSwitchButton(context);
+                addView(sUI.switchButton);
 
                 Switch component = (Switch) c;
                 components.put(component, componentUI);
@@ -158,9 +174,13 @@ public class GameView extends RelativeLayout {
         } else if ((stateColumns.get(state)+1) > (int) Math.ceil((double) state/2)) { // base
             setHeightBottomColumns(state);
             componentUI.y = heightBottomColumns.get(state);
+            if (componentUI instanceof SwitchUI) // fix les holes provoqués par le fait que les switchs ne soient pas obligatoirement au meme niveau
+                setHeightBottomColumns(state+1);
         } else { // haut
             setHeightTopColumns(state);
             componentUI.y = heightTopColumns.get(state);
+            if (componentUI instanceof SwitchUI) // fix les holes provoqués par le fait que les switchs ne soient pas obligatoirement au meme niveau
+                setHeightTopColumns(state + 1);
         }
     }
 
@@ -185,19 +205,13 @@ public class GameView extends RelativeLayout {
 
     private void setHeightTopColumns(int state) {
         if(heightTopColumns.get(state) != null) {
-            //heightTopColumns.put(state, heightTopColumns.get(state)-Positions.getInstance().componentSize-Positions.getInstance().spaceBetweenComponentsY);
             heightTopColumns.put(state, heightTopColumns.get(state)+Positions.getInstance().componentSize+Positions.getInstance().spaceBetweenComponentsY);
         } else {
             if (state%2 == 1)
                 heightTopColumns.put(state, Positions.getInstance().lightY-(Positions.getInstance().lightSize+Positions.getInstance().spaceBetweenComponentsY)*(int) Math.floor(state/2));
             else
-                heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize*state/2);
-            /*
-            if (state%2 == 1)
-                heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize-Positions.getInstance().spaceBetweenComponentsY);
-            else
-                heightTopColumns.put(state, Positions.getInstance().lightY-Positions.getInstance().lightSize);
-            */
+                heightTopColumns.put(state, Positions.getInstance().lightY-(Positions.getInstance().lightSize+Positions.getInstance().spaceBetweenComponentsY)*(state/2)+Positions.getInstance().spaceBetweenComponentsY);
+
         }
     }
 
@@ -216,6 +230,10 @@ public class GameView extends RelativeLayout {
                     c.getValue().addWires(cUI.getOutX(), cUI.getOutY());
 
             } else if (c.getKey() instanceof NotGate) {
+                Component component = ((NotGate) c.getKey()).getIn();
+                ComponentUI cUI = components.get(component);
+                if (cUI != null)
+                    c.getValue().addWires(cUI.getOutX(), cUI.getOutY());
             } else if (c.getKey() instanceof Light) {
                 Component component = ((Light) c.getKey()).getIn();
                 ComponentUI cUI = components.get(component);
@@ -237,15 +255,12 @@ public class GameView extends RelativeLayout {
                 else
                     c.getValue().wires.get(0).draw(canvas, paint);
 
-                System.out.println("koukou "+component+" : "+component.out());
-
                 component = ((LogicGate) c.getKey()).getInB();
                 if (component.out())
                     c.getValue().wires.get(1).draw(canvas, paint, true);
                 else
                     c.getValue().wires.get(1).draw(canvas, paint);
 
-                System.out.println("koukou "+component);
             } else if (c.getKey() instanceof NotGate) {
                 c.getValue().wires.get(0).draw(canvas, paint);
             } else if (c.getKey() instanceof Light) {

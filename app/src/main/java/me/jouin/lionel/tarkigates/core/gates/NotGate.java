@@ -11,6 +11,10 @@ public class NotGate implements Component {
 		return !in.out();
 	}
 
+	public void setIn(Component c) {
+		in = c;
+	}
+
 	public Component getIn() {
 		return in;
 	}

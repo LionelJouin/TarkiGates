@@ -34,6 +34,9 @@ public class Positions {
     public int logicGateHeight;
     public int logicGateWidth;
 
+    public int notGateHeight;
+    public int notGateWidth;
+
     public int lightX;
     public int lightY;
 
@@ -56,9 +59,11 @@ public class Positions {
         switchSize = dpToPx(defaultSize, mainActivity);
         lightSize = dpToPx(defaultSize, mainActivity);
 
-        //logicGateHeight = (int) Math.round(dpToPx(defaultSize, mainActivity)*0.5);
         logicGateHeight = dpToPx(defaultSize, mainActivity);
         logicGateWidth = dpToPx(defaultSize, mainActivity);
+
+        notGateHeight = dpToPx((int) (defaultSize*.2), mainActivity);
+        notGateWidth = dpToPx((int) (defaultSize*.2), mainActivity);
 
     }
 

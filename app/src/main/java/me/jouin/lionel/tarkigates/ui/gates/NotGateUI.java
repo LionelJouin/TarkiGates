@@ -2,7 +2,6 @@ package me.jouin.lionel.tarkigates.ui.gates;
 
 import me.jouin.lionel.tarkigates.Positions;
 import me.jouin.lionel.tarkigates.R;
-import me.jouin.lionel.tarkigates.core.Component;
 import me.jouin.lionel.tarkigates.ui.ComponentUI;
 import me.jouin.lionel.tarkigates.ui.WireUI;
 
@@ -22,9 +21,9 @@ public class NotGateUI extends ComponentUI {
         height = Positions.getInstance().logicGateHeight;
         width = Positions.getInstance().logicGateWidth;
         inX = 0;
-        inY = 0;
-        outX = 0;
-        outY = 0;
+        inY = height/2;
+        outX = width;
+        outY = height/2;
     }
 
     @Override
@@ -41,4 +40,5 @@ public class NotGateUI extends ComponentUI {
     public int getInY() {
         return y+inY;
     }
+
 }

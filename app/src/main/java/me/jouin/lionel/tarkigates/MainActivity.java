@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        level = new Level_4();
+        level = new Level_5();
 
     }
 
