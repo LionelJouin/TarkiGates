@@ -318,6 +318,19 @@ public class GameView extends RelativeLayout {
         if (xMax != null && xMin != null && yMax != null && yMin != null) {
             height = xMax - xMin;
             width = yMax - yMin;
+            int repX;
+            int repY;
+            if (xMin > Positions.getInstance().marginLeft)
+                repX = Positions.getInstance().marginLeft - xMin;
+            else
+                repX = Math.abs(xMin) + Positions.getInstance().marginLeft;
+            if (yMin > Positions.getInstance().marginTop)
+                repY = Positions.getInstance().marginTop - yMin;
+            else
+                repY = Math.abs(yMin) + Positions.getInstance().marginTop;
+            for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
+                c.getValue().repositioning(repX, repY);
+            }
         }
     }
 

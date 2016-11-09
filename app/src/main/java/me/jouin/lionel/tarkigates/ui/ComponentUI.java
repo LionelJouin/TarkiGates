@@ -1,10 +1,7 @@
 package me.jouin.lionel.tarkigates.ui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import me.jouin.lionel.tarkigates.core.Component;
 
 /**
  * Created by lione on 05/11/2016.
@@ -40,6 +37,11 @@ public abstract class ComponentUI {
     }
 
     public abstract void addWires(int startX, int startY);
+
+    public void repositioning(int repX, int repY) {
+        x += repX;
+        y += repY;
+    }
     /*
     public void addWires(int startX, int startY) {
         int stopX = getInX();

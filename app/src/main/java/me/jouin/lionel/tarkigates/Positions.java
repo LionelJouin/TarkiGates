@@ -20,6 +20,9 @@ public class Positions {
     public int windowHeight;
     public int windowWidth;
 
+    public int marginTop;
+    public int marginLeft;
+
     public int realLevelHeight;
     public int realLevelWidth;
     public int actualLevelHeight;
@@ -51,6 +54,9 @@ public class Positions {
         screenWidth = displaymetrics.widthPixels;
         windowHeight = mainActivity.findViewById(R.id.activity_main).getHeight();
         windowWidth = mainActivity.findViewById(R.id.activity_main).getWidth();
+
+        marginTop = dpToPx(defaultSize, mainActivity);
+        marginLeft = dpToPx(defaultSize, mainActivity);
 
         spaceBetweenComponentsX = dpToPx(defaultSize, mainActivity);
         spaceBetweenComponentsY = dpToPx(defaultSize, mainActivity);
