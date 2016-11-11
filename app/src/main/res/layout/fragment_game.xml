@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/game"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="me.jouin.lionel.tarkigates.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/fragment"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary" />
 
 </RelativeLayout>

@@ -55,10 +55,10 @@ public class Positions {
         windowHeight = mainActivity.findViewById(R.id.activity_main).getHeight();
         windowWidth = mainActivity.findViewById(R.id.activity_main).getWidth();
 
-        //marginTop = dpToPx((int) (defaultSize*.2), mainActivity);
-        //marginLeft = dpToPx((int) (defaultSize*.2), mainActivity);
-        marginTop = dpToPx(defaultSize, mainActivity);
-        marginLeft = dpToPx(defaultSize, mainActivity);
+        marginTop = dpToPx((int) (defaultSize*.3), mainActivity);
+        marginLeft = dpToPx((int) (defaultSize*.3), mainActivity);
+        //marginTop = dpToPx(defaultSize, mainActivity);
+        //marginLeft = dpToPx(defaultSize, mainActivity);
 
         spaceBetweenComponentsX = dpToPx(defaultSize, mainActivity);
         spaceBetweenComponentsY = dpToPx(defaultSize, mainActivity);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -49,9 +50,9 @@ public class GameView extends RelativeLayout {
 
     private Map<Component, ComponentUI> components;
 
+    private LayoutParams thisLayoutParams;
 
-
-    public GameView(Context context, Level level) {
+    public GameView(Context context, Level level, WebView wv) {
         super(context);
         this.level = level;
         this.context = context;
@@ -75,8 +76,17 @@ public class GameView extends RelativeLayout {
             }
         }
 
-        LayoutParams a = new LayoutParams(Positions.getInstance().actualLevelWidth, Positions.getInstance().actualLevelHeight);
-        this.setLayoutParams(a);
+        this.setLayoutParams(thisLayoutParams);
+
+        wv.loadData("<html>" +
+                "<header><meta name='viewport' content='width=device-width, initial-scale=1' /></header>" +
+                "<body style='margin: 0; padding: 0;height:"+thisLayoutParams.height+";width:"+thisLayoutParams.width+"px;'>" +
+                //"<div style='height:"+Positions.getInstance().actualLevelHeight+"px;width:"+Positions.getInstance().actualLevelWidth+"px;background:red;'></div>" +
+                "</body>" +
+                "</html>", "text/html; charset=utf-8", "UTF-8");
+
+        //LayoutParams a = new LayoutParams(Positions.getInstance().actualLevelWidth, Positions.getInstance().actualLevelHeight);
+        //this.setLayoutParams(a);
     }
 
     private void setLight(Light light) {
@@ -298,8 +308,8 @@ public class GameView extends RelativeLayout {
         }
 
         if (xMax != null && xMin != null && yMax != null && yMin != null) {
-            height = xMax - xMin;
-            width = yMax - yMin;
+            width = xMax - xMin + Positions.getInstance().marginLeft*2;
+            height = yMax - yMin + Positions.getInstance().marginTop*2;
             int repX;
             int repY;
             if (xMin >= Positions.getInstance().marginLeft)
@@ -313,6 +323,13 @@ public class GameView extends RelativeLayout {
             for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
                 c.getValue().repositioning(repX, repY);
             }
+
+            if (width<Positions.getInstance().windowWidth)
+                width = Positions.getInstance().windowWidth;
+            if (height<Positions.getInstance().windowHeight)
+                height = Positions.getInstance().windowHeight;
+
+            thisLayoutParams = new LayoutParams(width, height);
         }
     }
 
