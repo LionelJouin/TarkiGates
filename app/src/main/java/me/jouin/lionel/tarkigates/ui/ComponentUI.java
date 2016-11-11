@@ -1,5 +1,8 @@
 package me.jouin.lionel.tarkigates.ui;
 
+import android.content.Context;
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,17 +39,15 @@ public abstract class ComponentUI {
         return y+outY;
     }
 
-    public abstract void addWires(int startX, int startY);
-
     public void repositioning(int repX, int repY) {
         x += repX;
         y += repY;
     }
-    /*
-    public void addWires(int startX, int startY) {
-        int stopX = getInX();
-        int stopY = getInY();
-        wires.add(new WireUI(startX, startY, stopX, stopY));
-    }
-    */
+
+    public abstract void addWires(int startX, int startY);
+
+    public abstract View getView();
+
+    public abstract void setView(Context context);
+
 }

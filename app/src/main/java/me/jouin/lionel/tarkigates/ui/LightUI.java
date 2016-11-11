@@ -1,5 +1,10 @@
 package me.jouin.lionel.tarkigates.ui;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
+
 import me.jouin.lionel.tarkigates.Positions;
 import me.jouin.lionel.tarkigates.R;
 
@@ -11,6 +16,8 @@ public class LightUI extends ComponentUI {
 
     public int inX;
     public int inY;
+
+    private ImageView componentImageView;
 
     public LightUI(int x, int y) {
         super(x, y);
@@ -30,9 +37,33 @@ public class LightUI extends ComponentUI {
         return y+inY;
     }
 
+    @Override
+    public void repositioning(int repX, int repY) {
+        super.repositioning(repX, repY);
+        componentImageView.setX(x);
+        componentImageView.setY(y);
+    }
+
+    @Override
     public void addWires(int startX, int startY) {
         int stopX = getInX();
         int stopY = getInY();
         wires.add(new WireUI(startX, startY, stopX, stopY));
     }
+
+    @Override
+    public ImageView getView() {
+        return componentImageView;
+    }
+
+    @Override
+    public void setView(Context context) {
+        componentImageView = new ImageView(context);
+        Bitmap bmp = BitmapFactory.decodeResource(context.getResources(), imgId);
+        bmp = Bitmap.createScaledBitmap(bmp, width, height, true);
+        componentImageView.setImageBitmap(bmp);
+        componentImageView.setX(x);
+        componentImageView.setY(y);
+    }
+
 }

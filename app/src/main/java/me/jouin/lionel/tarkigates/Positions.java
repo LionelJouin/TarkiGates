@@ -55,6 +55,8 @@ public class Positions {
         windowHeight = mainActivity.findViewById(R.id.activity_main).getHeight();
         windowWidth = mainActivity.findViewById(R.id.activity_main).getWidth();
 
+        //marginTop = dpToPx((int) (defaultSize*.2), mainActivity);
+        //marginLeft = dpToPx((int) (defaultSize*.2), mainActivity);
         marginTop = dpToPx(defaultSize, mainActivity);
         marginLeft = dpToPx(defaultSize, mainActivity);
 
@@ -98,7 +100,8 @@ public class Positions {
             actualLevelHeight = windowHeight;
 
         // Light
-        lightX = 1500;
+        lightX = 0;
+        //lightY = -10;
         lightY = realLevelHeight/2-lightSize/2;
 
     }

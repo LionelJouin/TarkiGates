@@ -1,12 +1,9 @@
 package me.jouin.lionel.tarkigates.ui;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -61,6 +58,7 @@ public class GameView extends RelativeLayout {
 
         setLight(level.getLight());
         repositioning();
+        positioning();
         setWires();
 
         for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
@@ -82,14 +80,10 @@ public class GameView extends RelativeLayout {
     }
 
     private void setLight(Light light) {
-        ImageView lightImageView = new ImageView(context);
         LightUI lightUI = new LightUI(Positions.getInstance().lightX, Positions.getInstance().lightY);
-        Bitmap bmp = BitmapFactory.decodeResource(getResources(), lightUI.imgId);
-        bmp = Bitmap.createScaledBitmap(bmp, lightUI.width, lightUI.height, true);
-        lightImageView.setImageBitmap(bmp);
-        lightImageView.setY(lightUI.y);
-        lightImageView.setX(lightUI.x);
-        addView(lightImageView);
+
+        lightUI.setView(context);
+
         stateColumns = new HashMap<>();
         alreadyChecked = new ArrayList<>();
         heightTopColumns = new HashMap<>();
@@ -128,13 +122,8 @@ public class GameView extends RelativeLayout {
                 }
                 if (componentUI != null) {
                     setComponentPosition(componentUI, state);
-                    ImageView componentImageView = new ImageView(context);
-                    Bitmap bmp = BitmapFactory.decodeResource(getResources(), componentUI.imgId);
-                    bmp = Bitmap.createScaledBitmap(bmp, componentUI.width, componentUI.height, true);
-                    componentImageView.setImageBitmap(bmp);
-                    componentImageView.setY(componentUI.y);
-                    componentImageView.setX(componentUI.x);
-                    addView(componentImageView);
+                    componentUI.setView(context);
+
                     LogicGate component = (LogicGate) c;
 
                     components.put(component, componentUI);
@@ -166,13 +155,8 @@ public class GameView extends RelativeLayout {
                 componentUI.x = componentUI.x-componentUI.width;
                 componentUI.y = componentUI.y-componentUI.width/2;
 
-                ImageView componentImageView = new ImageView(context);
-                Bitmap bmp = BitmapFactory.decodeResource(getResources(), componentUI.imgId);
-                bmp = Bitmap.createScaledBitmap(bmp, componentUI.width, componentUI.height, true);
-                componentImageView.setImageBitmap(bmp);
-                componentImageView.setY(componentUI.y);
-                componentImageView.setX(componentUI.x);
-                addView(componentImageView);
+                componentUI.setView(context);
+
                 NotGate component = (NotGate) c;
 
                 components.put(component, componentUI);
@@ -182,10 +166,8 @@ public class GameView extends RelativeLayout {
                 componentUI = new SwitchUI(x, y);
                 setComponentPosition(componentUI, state);
                 setStateColumns(state + 1); // fix les holes provoqués par le fait que les switchs ne soient pas obligatoirement au meme niveau
-                SwitchUI sUI = (SwitchUI) componentUI;
 
-                sUI.setSwitchButton(context);
-                addView(sUI.switchButton);
+                componentUI.setView(context);
 
                 Switch component = (Switch) c;
                 components.put(component, componentUI);
@@ -308,10 +290,10 @@ public class GameView extends RelativeLayout {
                     xMax = currentXMax;
                 if (currentXMin < xMin)
                     xMin = currentXMin;
-                if (currentYMin > yMax)
-                    yMax = currentYMin;
-                if (currentYMax < yMin)
-                    yMin = currentYMax;
+                if (currentYMin < yMin)
+                    yMin = currentYMin;
+                if (currentYMax > yMax)
+                    yMax = currentYMax;
             }
         }
 
@@ -320,17 +302,23 @@ public class GameView extends RelativeLayout {
             width = yMax - yMin;
             int repX;
             int repY;
-            if (xMin > Positions.getInstance().marginLeft)
+            if (xMin >= Positions.getInstance().marginLeft)
                 repX = Positions.getInstance().marginLeft - xMin;
             else
                 repX = Math.abs(xMin) + Positions.getInstance().marginLeft;
-            if (yMin > Positions.getInstance().marginTop)
+            if (yMin >= Positions.getInstance().marginTop)
                 repY = Positions.getInstance().marginTop - yMin;
             else
                 repY = Math.abs(yMin) + Positions.getInstance().marginTop;
             for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
                 c.getValue().repositioning(repX, repY);
             }
+        }
+    }
+
+    public void positioning() {
+        for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
+            addView(c.getValue().getView());
         }
     }
 

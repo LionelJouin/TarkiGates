@@ -25,10 +25,24 @@ public class SwitchUI extends ComponentUI {
         outY = height/2;
     }
 
+    @Override
+    public void repositioning(int repX, int repY) {
+        super.repositioning(repX, repY);
+        switchButton.setX(x);
+        switchButton.setY(y);
+    }
+
+    @Override
     public void addWires(int startX, int startY) {}
 
-    public void setSwitchButton(Context context) {
-        switchButton= new Button(context);
+    @Override
+    public Button getView() {
+        return switchButton;
+    }
+
+    @Override
+    public void setView(Context context) {
+        switchButton = new Button(context);
         switchButton.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
         switchButton.setY(y);
         switchButton.setX(x);
