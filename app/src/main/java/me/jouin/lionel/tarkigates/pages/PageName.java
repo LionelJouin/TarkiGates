@@ -5,5 +5,5 @@ package me.jouin.lionel.tarkigates.pages;
  */
 
 public enum PageName {
-    HOME, GAME, OPTIONS
+    HOME, GAME, SETTINGS, INFORMATIONS
 }

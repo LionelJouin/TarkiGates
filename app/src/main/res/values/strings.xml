@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TarkiGates</string>
+    <string name="pref_levels">TarkiGates</string>
 </resources>

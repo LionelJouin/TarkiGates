@@ -1,12 +1,15 @@
 package me.jouin.lionel.tarkigates.pages;
 
-import android.graphics.Color;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.HashMap;
@@ -32,7 +35,7 @@ public class Home extends Page {
         LinearLayout homeLayout = (LinearLayout) root.findViewById(R.id.home);
         LinearLayout buildingLayout = (LinearLayout) root.findViewById(R.id.building);
 
-        int[] colors = {Color.parseColor("#2c3e50"), Color.parseColor("#34495e")};
+        int[] colors = {ResourcesCompat.getColor(getResources(), R.color.skyStart, null), ResourcesCompat.getColor(getResources(), R.color.skyEnd, null)};
         GradientDrawable gd = new GradientDrawable( GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
         homeLayout.setBackgroundDrawable(gd);
@@ -45,20 +48,17 @@ public class Home extends Page {
 
         Random rand = new Random();
 
+        SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.pref_levels), Context.MODE_PRIVATE);
+
         for (final LevelList levelList : LevelList.values()) {
+            int levelSaved = sharedPref.getInt(levelList.toString(), 0);
             if (i%3 == 0) {
                 floorWindow = new LinearLayout(root.getContext());
                 floorWindowSill = new LinearLayout(root.getContext());
                 floorWindow.setOrientation(LinearLayout.HORIZONTAL);
                 floorWindowSill.setOrientation(LinearLayout.HORIZONTAL);
-                int r = rand.nextInt(255);
-                int g = rand.nextInt(255);
-                int b = rand.nextInt(255);
-                //floorWindow.setBackgroundColor(Color.rgb(r, g, b));
-                //floorWindowSill.setBackgroundColor(Color.rgb(r, g, b));
-                int buildingColor = Color.parseColor("#bdc3c7");
-                floorWindow.setBackgroundColor(buildingColor);
-                floorWindowSill.setBackgroundColor(buildingColor);
+                floorWindow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.building, null));
+                floorWindowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.building, null));
                 buildingLayout.addView(floorWindow);
                 buildingLayout.addView(floorWindowSill);
             }
@@ -66,10 +66,13 @@ public class Home extends Page {
             Button window = new Button(root.getContext());
             window.setText(""+i);
             window.setTextSize(60);
-            //window.setTextColor(Color.parseColor("#34495e"));
-            //window.setBackgroundColor(Color.parseColor("#2c3e50"));
-            window.setTextColor(Color.parseColor("#f1c40f"));
-            window.setBackgroundColor(Color.parseColor("#f39c12"));
+            if (levelSaved>0) {
+                window.setTextColor(ResourcesCompat.getColor(getResources(), R.color.windowTextOn, null));
+                window.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOn, null));
+            } else {
+                window.setTextColor(ResourcesCompat.getColor(getResources(), R.color.windowTextOff, null));
+                window.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
+            }
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
             params.setMargins(30, 40, 30, 0);
             window.setLayoutParams(params);
@@ -85,13 +88,37 @@ public class Home extends Page {
 
             LinearLayout windowSill = new LinearLayout(root.getContext());
             params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 35, 1f);
-            windowSill.setBackgroundColor(Color.parseColor("#f1c40f"));
+            if (levelSaved==0) {
+                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillClear, null));
+            } else if (levelSaved==1) {
+                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillBronze, null));
+            } else if (levelSaved==2) {
+                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillSilver, null));
+            } else if (levelSaved==3) {
+                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
+            }
             params.setMargins(20, 0, 20, 0);
             windowSill.setLayoutParams(params);
             floorWindowSill.addView(windowSill);
 
             i++;
         }
+
+        ImageView settings = (ImageView) root.findViewById(R.id.imageViewSettings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePage(PageName.SETTINGS);
+            }
+        });
+
+        ImageView info = (ImageView) root.findViewById(R.id.imageViewInformations);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePage(PageName.INFORMATIONS);
+            }
+        });
 
         /*
         Button b = (Button) root.findViewById(R.id.button2);

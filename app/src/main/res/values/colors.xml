@@ -3,4 +3,19 @@
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="building">#bdc3c7</color>
+
+    <color name="windowOn">#f39c12</color>
+    <color name="windowTextOn">#f1c40f</color>
+    <color name="windowOff">#34495e</color>
+    <color name="windowTextOff">#2c3e50</color>
+
+    <color name="skyStart">#483078</color>
+    <color name="skyEnd">#001848</color>
+
+    <color name="sillClear">#ffffff</color>
+    <color name="sillBronze">#d35400</color>
+    <color name="sillSilver">#bdc3c7</color>
+    <color name="sillGold">#f1c40f</color>
 </resources>

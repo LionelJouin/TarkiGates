@@ -10,9 +10,11 @@ import java.util.Map;
 import me.jouin.lionel.tarkigates.levels.LevelList;
 import me.jouin.lionel.tarkigates.pages.Game;
 import me.jouin.lionel.tarkigates.pages.Home;
+import me.jouin.lionel.tarkigates.pages.Informations;
 import me.jouin.lionel.tarkigates.pages.Page;
 import me.jouin.lionel.tarkigates.pages.PageListener;
 import me.jouin.lionel.tarkigates.pages.PageName;
+import me.jouin.lionel.tarkigates.pages.Settings;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction tx;
     private Home home;
     private Game game;
-    //private Game options;
+    private Settings settings;
+    private Informations informations;
     private Map<PageName, Page> pages;
 
     @Override
@@ -38,10 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
         home = new Home();
         game = new Game();
+        settings = new Settings();
+        informations = new Informations();
 
         pages = new HashMap<>();
         pages.put(PageName.HOME, home);
         pages.put(PageName.GAME, game);
+        pages.put(PageName.SETTINGS, settings);
+        pages.put(PageName.INFORMATIONS, informations);
 
     }
 
