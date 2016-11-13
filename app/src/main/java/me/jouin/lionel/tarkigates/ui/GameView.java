@@ -52,6 +52,8 @@ public class GameView extends RelativeLayout {
 
     private LayoutParams thisLayoutParams;
 
+    private boolean listenerState = true;
+
     public GameView(Context context, Level level, WebView wv) {
         super(context);
         this.level = level;
@@ -69,8 +71,10 @@ public class GameView extends RelativeLayout {
                 sUI.switchButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        key.changeState();
-                        invalidate();
+                        if (listenerState) {
+                            key.changeState();
+                            invalidate();
+                        }
                     }
                 });
             }
@@ -379,6 +383,13 @@ public class GameView extends RelativeLayout {
             }
         }
 
+    }
+
+    public void setListenerState(boolean listenerState) {
+        this.listenerState = listenerState;
+    }
+    public boolean getListenerState() {
+        return listenerState;
     }
 
 }

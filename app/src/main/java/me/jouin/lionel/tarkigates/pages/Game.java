@@ -65,10 +65,15 @@ public class Game extends Page {
             level.getLight().addLightListeners(new LightListener() {
                 @Override
                 public void switchLight(boolean state) {
-                    if (state)
+                    if (state) {
                         finishGameMenu.setVisibility(gameView.VISIBLE);
-                    else
+                        if (gameView != null)
+                            gameView.setListenerState(false);
+                    } else {
                         finishGameMenu.setVisibility(gameView.INVISIBLE);
+                        if (gameView != null)
+                            gameView.setListenerState(true);
+                    }
                 }
             });
 
@@ -76,47 +81,64 @@ public class Game extends Page {
             changePage(PageName.HOME);
         }
 
-
+        // PAUSE
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pauseMenu.setVisibility(view.VISIBLE);
+                if (gameView != null && gameView.getListenerState()) {
+                    pauseMenu.setVisibility(view.VISIBLE);
+                    gameView.setListenerState(false);
+                }
             }
         });
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 pauseMenu.setVisibility(view.INVISIBLE);
+                if (gameView != null)
+                    gameView.setListenerState(true);
             }
         });
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changePage(PageName.SETTINGS);
+                if (gameView != null)
+                    gameView.setListenerState(true);
             }
         });
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changePage(PageName.HOME);
+                if (gameView != null)
+                    gameView.setListenerState(true);
             }
         });
+
+        // WIN
         continuerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changePage(PageName.HOME);
+                if (gameView != null)
+                    gameView.setListenerState(true);
             }
         });
         homeButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changePage(PageName.HOME);
+                if (gameView != null)
+                    gameView.setListenerState(true);
             }
         });
         replayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changePage(PageName.HOME);
+                if (gameView != null)
+                    gameView.setListenerState(true);
             }
         });
 
@@ -125,6 +147,8 @@ public class Game extends Page {
 
     public void setLevel(LevelList levelList) {
         level = LevelList.createLevel(levelList);
+        if (gameView != null)
+            gameView.setListenerState(true);
     }
 
 }
