@@ -89,10 +89,17 @@ public class GameView extends RelativeLayout {
         //this.setLayoutParams(a);
     }
 
-    private void setLight(Light light) {
+    private void setLight(final Light light) {
         LightUI lightUI = new LightUI(Positions.getInstance().lightX, Positions.getInstance().lightY);
 
         lightUI.setView(context);
+
+        lightUI.addSwitchUIListeners(new LightUIListener() {
+            @Override
+            public void switchLightUI() {
+                light.tiggerTheLight();
+            }
+        });
 
         stateColumns = new HashMap<>();
         alreadyChecked = new ArrayList<>();

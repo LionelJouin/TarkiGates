@@ -5,6 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.jouin.lionel.tarkigates.Positions;
 import me.jouin.lionel.tarkigates.R;
 
@@ -18,6 +21,12 @@ public class LightUI extends ComponentUI {
     public int inY;
 
     private ImageView componentImageView;
+
+    private List<LightUIListener> lightUIListener = new ArrayList<>();
+
+    public void addSwitchUIListeners(LightUIListener l) {
+        lightUIListener.add(l);
+    }
 
     public LightUI(int x, int y) {
         super(x, y);
@@ -48,7 +57,16 @@ public class LightUI extends ComponentUI {
     public void addWires(int startX, int startY) {
         int stopX = getInX();
         int stopY = getInY();
-        wires.add(new WireUI(startX, startY, stopX, stopY));
+        WireUI w = new WireUI(startX, startY, stopX, stopY);
+        wires.add(w);
+        w.addSwitchUIListeners(new WireUIListener() {
+            @Override
+            public void switchWire() {
+                for (LightUIListener l : lightUIListener) {
+                    l.switchLightUI();
+                }
+            }
+        });
     }
 
     @Override

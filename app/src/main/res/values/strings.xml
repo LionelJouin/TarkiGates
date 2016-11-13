@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">TarkiGates</string>
-    <string name="pref_levels">TarkiGates</string>
+    <string name="pref_levels">levels</string>
+    <string name="resume">Reprendre</string>
+    <string name="settings">Options</string>
+    <string name="gotohome">Revenir au menu principal</string>
+    <string name="pause">PAUSE</string>
+    <string name="continuer">continuer</string>
+    <string name="win">WIN</string>
+    <string name="nbclicks">Nombre de clicks</string>
+    <string name="result">Resultat</string>
 </resources>

@@ -39,13 +39,31 @@
                     android:layout_alignParentRight="true" />
             </RelativeLayout>
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/titre"
+                android:id="@+id/title" />
+            <ImageView
+                android:layout_weight="0.5"
+                android:layout_width="75dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/mascotte"
+                android:id="@+id/mascotte" />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:layout_marginTop="50dp"
                 android:background="@color/sillClear">
             </LinearLayout>
             <LinearLayout

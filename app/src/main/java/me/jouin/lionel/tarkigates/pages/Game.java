@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import me.jouin.lionel.tarkigates.Positions;
 import me.jouin.lionel.tarkigates.R;
+import me.jouin.lionel.tarkigates.core.LightListener;
 import me.jouin.lionel.tarkigates.levels.Level;
 import me.jouin.lionel.tarkigates.levels.LevelList;
 import me.jouin.lionel.tarkigates.ui.GameView;
@@ -31,6 +34,19 @@ public class Game extends Page {
 
         RelativeLayout gameRelativeLayout = (RelativeLayout) root.findViewById(R.id.game);
 
+        ImageView pauseButton = (ImageView) root.findViewById(R.id.pauseButton);
+        final LinearLayout pauseMenu = (LinearLayout) root.findViewById(R.id.pauseMenu);
+
+        Button resumeButton = (Button) root.findViewById(R.id.resume);
+        Button settingsButton = (Button) root.findViewById(R.id.settings);
+        Button homeButton = (Button) root.findViewById(R.id.gotohome);
+
+        final LinearLayout finishGameMenu = (LinearLayout) root.findViewById(R.id.finishGame);
+
+        ImageView continuerButton = (ImageView) root.findViewById(R.id.continuer);
+        ImageView replayButton = (ImageView) root.findViewById(R.id.replay);
+        ImageView homeButton2 = (ImageView) root.findViewById(R.id.gotohome2);
+
         if (level != null && level.isValid()) {
 
             Positions.getInstance().setLevelPositions(level);
@@ -46,20 +62,63 @@ public class Game extends Page {
 
             gameRelativeLayout.addView(wv);
 
+            level.getLight().addLightListeners(new LightListener() {
+                @Override
+                public void switchLight(boolean state) {
+                    if (state)
+                        finishGameMenu.setVisibility(gameView.VISIBLE);
+                    else
+                        finishGameMenu.setVisibility(gameView.INVISIBLE);
+                }
+            });
+
         } else {
-            Toast.makeText(root.getContext(), "Level invalide", Toast.LENGTH_LONG).show();
+            changePage(PageName.HOME);
         }
 
-        /*
-        Button b = (Button) root.findViewById(R.id.button2);
 
-        b.setOnClickListener(new View.OnClickListener() {
+        pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                triggerPageListeners(PageName.HOME);
+                pauseMenu.setVisibility(view.VISIBLE);
             }
         });
-        */
+        resumeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pauseMenu.setVisibility(view.INVISIBLE);
+            }
+        });
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePage(PageName.SETTINGS);
+            }
+        });
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePage(PageName.HOME);
+            }
+        });
+        continuerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePage(PageName.HOME);
+            }
+        });
+        homeButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePage(PageName.HOME);
+            }
+        });
+        replayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePage(PageName.HOME);
+            }
+        });
 
         return root;
     }

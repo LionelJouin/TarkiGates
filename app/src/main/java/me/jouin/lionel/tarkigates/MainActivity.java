@@ -50,14 +50,6 @@ public class MainActivity extends AppCompatActivity {
         pages.put(PageName.SETTINGS, settings);
         pages.put(PageName.INFORMATIONS, informations);
 
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-
-        Positions.getInstance(this);
-
         for(Map.Entry<PageName, Page> p : pages.entrySet()) {
             p.getValue().addPageListeners(new PageListener() {
                 @Override
@@ -80,28 +72,13 @@ public class MainActivity extends AppCompatActivity {
         tx.replace(R.id.fragment, pages.get(PageName.HOME));
         tx.commit();
 
+    }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
 
-
-        /*
-        if (level.isValid()) {
-
-            Positions.getInstance().setLevelPositions(level);
-
-            wv = new WebView(this);
-
-            gameView = new GameView(this, level, wv);
-            gameView.setBackgroundColor(Color.parseColor("#bdc3c7"));
-
-            wv.setInitialScale(100);
-            //wv.setLayoutParams(new RelativeLayout.LayoutParams(Positions.getInstance().actualLevelHeight, Positions.getInstance().actualLevelHeight-200));
-
-            wv.addView(gameView);
-            setContentView(wv);
-        } else {
-            Toast.makeText(getApplicationContext(), "Level invalide", Toast.LENGTH_LONG).show();
-        }
-        */
+        Positions.getInstance(this);
 
     }
 

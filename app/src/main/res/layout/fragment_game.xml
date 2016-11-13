@@ -1,10 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/game"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="me.jouin.lionel.tarkigates.MainActivity">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:id="@+id/game"
+        android:layout_height="fill_parent"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/pause"
+        android:id="@+id/pauseButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:padding="10dp"
+        android:background="@color/windowOff"
+        android:id="@+id/pauseMenu"
+        android:visibility="invisible">
+
+        <TextView
+            android:text="@string/pause"
+            android:textSize="30sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/textView"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal|bold" />
+        <Button
+            android:text="@string/resume"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/resume" />
+        <Button
+            android:text="@string/settings"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/settings" />
+        <Button
+            android:text="@string/gotohome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/gotohome" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:padding="30dp"
+        android:background="@color/windowOff"
+        android:id="@+id/finishGame"
+        android:visibility="invisible">
+        <TextView
+            android:text="@string/win"
+            android:textSize="30sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/textView2"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal|bold" />
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="@string/nbclicks"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nbclickText"
+                android:textAlignment="center"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal|bold" />
+            <TextView
+                android:text="0"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nbclick"
+                android:layout_alignParentRight="true"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal|bold" />
+            </RelativeLayout>
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="@string/result"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/resultText"
+                android:textAlignment="center"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal|bold" />
+            <TextView
+                android:text="GREEN"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/result"
+                android:layout_alignParentRight="true"
+                android:fontFamily="sans-serif"
+                android:textStyle="normal|bold" />
+        </RelativeLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                app:srcCompat="@drawable/home"
+                android:layout_height="50dp"
+                android:id="@+id/gotohome2" />
+            <ImageView
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                app:srcCompat="@drawable/replay"
+                android:layout_height="50dp"
+                android:id="@+id/replay" />
+            <ImageView
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                app:srcCompat="@drawable/play"
+                android:layout_height="50dp"
+                android:id="@+id/continuer" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

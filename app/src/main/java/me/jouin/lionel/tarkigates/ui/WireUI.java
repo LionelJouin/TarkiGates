@@ -4,11 +4,21 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by lione on 06/11/2016.
  */
 
 public class WireUI {
+
+    private boolean stateListener = false;
+    private List<WireUIListener> wireUIListener = new ArrayList<>();
+
+    public void addSwitchUIListeners(WireUIListener l) {
+        wireUIListener.add(l);
+    }
 
     public int wireThickness = 5;
 
@@ -28,9 +38,21 @@ public class WireUI {
     }
 
     public void draw(Canvas canvas, Paint paint, boolean state) {
-        if (!state)
+        if (!state) {
+            if (stateListener != state) {
+                for (WireUIListener l : wireUIListener) {
+                    l.switchWire();
+                }
+                stateListener = state;
+            }
             paint.setColor(color);
-        else {
+        } else {
+            if (stateListener != state) {
+                for (WireUIListener l : wireUIListener) {
+                    l.switchWire();
+                }
+                stateListener = state;
+            }
             paint.setColor(colorActivated);
         }
 
