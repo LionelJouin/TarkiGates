@@ -36,7 +36,7 @@ public class Home extends Page {
         LinearLayout buildingLayout = (LinearLayout) root.findViewById(R.id.building);
 
         int[] colors = {ResourcesCompat.getColor(getResources(), R.color.skyStart, null), ResourcesCompat.getColor(getResources(), R.color.skyEnd, null)};
-        GradientDrawable gd = new GradientDrawable( GradientDrawable.Orientation.TOP_BOTTOM, colors);
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
         homeLayout.setBackgroundDrawable(gd);
 
@@ -88,15 +88,20 @@ public class Home extends Page {
 
             LinearLayout windowSill = new LinearLayout(root.getContext());
             params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 35, 1f);
-            if (levelSaved==0) {
-                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillClear, null));
-            } else if (levelSaved==1) {
-                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillBronze, null));
-            } else if (levelSaved==2) {
-                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillSilver, null));
-            } else if (levelSaved==3) {
-                windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
+            switch(levelSaved) {
+                case 1:
+                    windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillBronze, null));
+                    break;
+                case 2:
+                    windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillSilver, null));
+                    break;
+                case 3:
+                    windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
+                    break;
+                default:
+                    windowSill.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillClear, null));
             }
+
             params.setMargins(20, 0, 20, 0);
             windowSill.setLayoutParams(params);
             floorWindowSill.addView(windowSill);
@@ -113,23 +118,13 @@ public class Home extends Page {
         });
 
         ImageView info = (ImageView) root.findViewById(R.id.imageViewInformations);
-        settings.setOnClickListener(new View.OnClickListener() {
+        info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 changePage(PageName.INFORMATIONS);
             }
         });
 
-        /*
-        Button b = (Button) root.findViewById(R.id.button2);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                triggerPageListeners(PageName.GAME);
-            }
-        });
-        */
         return root;
     }
 

@@ -19,6 +19,10 @@ public class Level_4 extends Level {
     public Level_4() {
         super(new Light());
 
+        result[0] = 2;
+        result[1] = 3;
+        result[2] = 4;
+
         Switch s1 = new Switch();
         Switch s2 = new Switch();
         Switch s3 = new Switch();

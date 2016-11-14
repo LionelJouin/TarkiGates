@@ -15,7 +15,7 @@
     <color name="skyEnd">#001848</color>
 
     <color name="sillClear">#ffffff</color>
-    <color name="sillBronze">#d35400</color>
-    <color name="sillSilver">#bdc3c7</color>
-    <color name="sillGold">#f1c40f</color>
+    <color name="sillBronze">#FB2E01</color>
+    <color name="sillSilver">#FFE28A</color>
+    <color name="sillGold">#6FCB9F</color>
 </resources>

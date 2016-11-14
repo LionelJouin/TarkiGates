@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TarkiGates</string>
     <string name="pref_levels">levels</string>
@@ -6,7 +7,12 @@
     <string name="gotohome">Revenir au menu principal</string>
     <string name="pause">PAUSE</string>
     <string name="continuer">continuer</string>
-    <string name="win">WIN</string>
+    <string name="win">BIEN JOUÉ !</string>
     <string name="nbclicks">Nombre de clicks</string>
     <string name="result">Resultat</string>
+    <string name="doubleBackToExit">Cliquez à nouveau sur RETOUR pour quitter</string>
+    <string name="informations">Créé par : Lionel JOUIN\nEtudiant à L\'IUT de Laval\n2015 - 2017</string>
+    <string name="rules">Regles</string>
+    <string name="rulesText">123</string>
+    <string name="author">Auteur</string>
 </resources>

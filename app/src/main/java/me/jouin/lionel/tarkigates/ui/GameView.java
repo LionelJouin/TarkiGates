@@ -52,12 +52,16 @@ public class GameView extends RelativeLayout {
 
     private LayoutParams thisLayoutParams;
 
+    private int nbClicks = 0;
+
     private boolean listenerState = true;
 
     public GameView(Context context, Level level, WebView wv) {
         super(context);
         this.level = level;
         this.context = context;
+
+        nbClicks = 0;
 
         setLight(level.getLight());
         repositioning();
@@ -72,6 +76,7 @@ public class GameView extends RelativeLayout {
                     @Override
                     public void onClick(View view) {
                         if (listenerState) {
+                            nbClicks++;
                             key.changeState();
                             invalidate();
                         }
@@ -392,4 +397,7 @@ public class GameView extends RelativeLayout {
         return listenerState;
     }
 
+    public int getNbClicks() {
+        return nbClicks;
+    }
 }

@@ -1,7 +1,9 @@
 package me.jouin.lionel.tarkigates.pages;
 
-import android.graphics.Color;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,7 +153,7 @@ public class Game extends Page {
             wv = new WebView(root.getContext());
 
             gameView = new GameView(root.getContext(), level, wv);
-            gameView.setBackgroundColor(Color.parseColor("#bdc3c7"));
+            gameView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
 
             wv.setInitialScale(100);
 
@@ -164,10 +166,25 @@ public class Game extends Page {
                 public void switchLight(boolean state) {
                     if (state) {
                         finishGameMenu.setVisibility(gameView.VISIBLE);
+                        gameView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOn, null));
+                        // SAVE
+                        LevelList levelList = LevelList.LEVEL_1;
+                        levelList = levelList.whichLevel(level);
+                        SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.pref_levels), Context.MODE_PRIVATE);
+                        System.out.println("koukou "+levelList.toString());
+                        int levelSaved = sharedPref.getInt(levelList.toString(), -1);
+                        int result = level.getResult(gameView.getNbClicks());
+                        if (result>levelSaved || levelSaved == -1) {
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putInt(levelList.toString(), result);
+                            editor.commit();
+                        }
+
                         if (gameView != null)
                             gameView.setListenerState(false);
                     } else {
                         finishGameMenu.setVisibility(gameView.INVISIBLE);
+                        gameView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
                         if (gameView != null)
                             gameView.setListenerState(true);
                     }

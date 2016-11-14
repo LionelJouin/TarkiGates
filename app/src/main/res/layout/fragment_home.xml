@@ -48,22 +48,25 @@
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/titre"
                 android:id="@+id/title" />
-            <ImageView
-                android:layout_weight="0.5"
-                android:layout_width="75dp"
-                android:layout_height="0dp"
-                android:adjustViewBounds="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/mascotte"
-                android:id="@+id/mascotte" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/mascotte"
+                    android:id="@+id/mascotte" />
+            </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
+                android:id="@+id/roof"
                 android:background="@color/sillClear">
             </LinearLayout>
             <LinearLayout
@@ -76,12 +79,36 @@
                 android:background="@android:color/holo_green_light">
             </LinearLayout>
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:background="@color/building">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_gravity="bottom"
+                    app:srcCompat="@drawable/fleur"
+                    android:id="@+id/fleur" />
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:gravity="center"
+                    app:srcCompat="@drawable/porte"
+                    android:id="@+id/porte" />
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:gravity="center"
+                    android:layout_gravity="bottom"
+                    app:srcCompat="@drawable/fleur"
+                    android:id="@+id/fleur2" />
             </LinearLayout>
         </LinearLayout>
 

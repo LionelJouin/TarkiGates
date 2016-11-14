@@ -18,6 +18,7 @@ public abstract class Level {
     protected Light light;
     protected boolean isValid;
     protected int nbSwitchs;
+    protected int[] result = new int[3];
 
     public Level(Light light) {
         setLight(light);
@@ -71,5 +72,17 @@ public abstract class Level {
             }
         }
         return r;
+    }
+
+    public int getResult(int nbClicks) {
+        if(nbClicks<=result[0]) {
+            return 3;
+        } else if (nbClicks<=result[1]) {
+            return 2;
+        } else if (nbClicks<=result[2]) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

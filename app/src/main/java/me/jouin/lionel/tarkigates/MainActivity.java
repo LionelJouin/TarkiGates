@@ -1,8 +1,10 @@
 package me.jouin.lionel.tarkigates;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private Settings settings;
     private Informations informations;
     private Map<PageName, Page> pages;
+    private PageName pageActuel;
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +58,7 @@ public class MainActivity extends AppCompatActivity {
             p.getValue().addPageListeners(new PageListener() {
                 @Override
                 public void pageChange(PageName pageName) {
-                    if (pages.containsKey(pageName)) {
-                        tx = getSupportFragmentManager().beginTransaction();
-                        tx.replace(R.id.fragment, pages.get(pageName));
-                        tx.commit();
-                    }
+                    changePage(pageName);
                 }
 
                 @Override
@@ -68,10 +68,17 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        tx = getSupportFragmentManager().beginTransaction();
-        tx.replace(R.id.fragment, pages.get(PageName.HOME));
-        tx.commit();
+        changePage(PageName.HOME);
 
+    }
+
+    public void changePage(PageName pageName) {
+        if (pages.containsKey(pageName)) {
+            pageActuel = pageName;
+            tx = getSupportFragmentManager().beginTransaction();
+            tx.replace(R.id.fragment, pages.get(pageName));
+            tx.commit();
+        }
     }
 
     @Override
@@ -80,6 +87,28 @@ public class MainActivity extends AppCompatActivity {
 
         Positions.getInstance(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (pageActuel == PageName.HOME) {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, getString(R.string.doubleBackToExit), Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            changePage(PageName.HOME);
+        }
     }
 
 }
