@@ -1,6 +1,7 @@
 package me.jouin.lionel.tarkigates.ui;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
@@ -41,6 +42,7 @@ import me.jouin.lionel.tarkigates.ui.gates.XorGateUI;
 public class GameView extends RelativeLayout {
 
     private Paint paint = new Paint();
+    private WebView wv;
     private Level level;
     private Context context;
     private Map<Integer, Integer> stateColumns;
@@ -87,15 +89,13 @@ public class GameView extends RelativeLayout {
 
         this.setLayoutParams(thisLayoutParams);
 
-        wv.loadData("<html>" +
+        this.wv = wv;
+        this.wv.loadData("<html>" +
                 "<header><meta name='viewport' content='width=device-width, initial-scale=1' /></header>" +
                 "<body style='margin: 0; padding: 0;height:"+thisLayoutParams.height+";width:"+thisLayoutParams.width+"px;'>" +
-                //"<div style='height:"+Positions.getInstance().actualLevelHeight+"px;width:"+Positions.getInstance().actualLevelWidth+"px;background:red;'></div>" +
                 "</body>" +
                 "</html>", "text/html; charset=utf-8", "UTF-8");
 
-        //LayoutParams a = new LayoutParams(Positions.getInstance().actualLevelWidth, Positions.getInstance().actualLevelHeight);
-        //this.setLayoutParams(a);
     }
 
     private void setLight(final Light light) {
@@ -400,4 +400,12 @@ public class GameView extends RelativeLayout {
     public int getNbClicks() {
         return nbClicks;
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        wv.reload();
+        wv.onResume();
+    }
+
 }

@@ -12,6 +12,7 @@ public class OrGateUI extends LogicGateUI {
         super(x, y);
         imgId = R.drawable.or;
         imgIdActivated = R.drawable.or;
+        outX = (int) Math.round(width*0.72);
     }
 
 }

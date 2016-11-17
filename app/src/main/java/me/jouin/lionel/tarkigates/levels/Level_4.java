@@ -6,6 +6,7 @@ import me.jouin.lionel.tarkigates.core.gates.AndGate;
 import me.jouin.lionel.tarkigates.core.gates.LogicGate;
 import me.jouin.lionel.tarkigates.core.gates.NandGate;
 import me.jouin.lionel.tarkigates.core.gates.NorGate;
+import me.jouin.lionel.tarkigates.core.gates.NotGate;
 import me.jouin.lionel.tarkigates.core.gates.OrGate;
 import me.jouin.lionel.tarkigates.core.gates.XnorGate;
 import me.jouin.lionel.tarkigates.core.gates.XorGate;
@@ -38,6 +39,7 @@ public class Level_4 extends Level {
         LogicGate g8 = new XnorGate();
         LogicGate g9 = new NorGate();
         LogicGate g10 = new NandGate();
+        NotGate n1 = new NotGate();
         Light l = new Light();
 
         g7.setInA(s1);
@@ -64,7 +66,9 @@ public class Level_4 extends Level {
         g1.setInA(g2);
         g1.setInB(g3);
 
-        l.setIn(g1);
+        n1.setIn(g1);
+
+        l.setIn(n1);
 
         setLight(l);
 

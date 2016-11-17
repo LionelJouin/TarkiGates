@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import me.jouin.lionel.tarkigates.Positions;
 import me.jouin.lionel.tarkigates.R;
@@ -33,6 +34,8 @@ public class Game extends Page {
     private ViewGroup root;
     private LinearLayout finishGameMenu;
     private LinearLayout pauseMenu;
+    private TextView nbClickTextView;
+    private LinearLayout resultLinearLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +55,9 @@ public class Game extends Page {
         ImageView continuerButton = (ImageView) root.findViewById(R.id.continuer);
         ImageView replayButton = (ImageView) root.findViewById(R.id.replay);
         ImageView homeButton2 = (ImageView) root.findViewById(R.id.gotohome2);
+
+        nbClickTextView = (TextView) root.findViewById(R.id.nbclick);
+        resultLinearLayout = (LinearLayout) root.findViewById(R.id.result);
 
         createUI();
 
@@ -156,6 +162,7 @@ public class Game extends Page {
             gameView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
 
             wv.setInitialScale(100);
+            wv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
 
             wv.addView(gameView);
 
@@ -171,9 +178,25 @@ public class Game extends Page {
                         LevelList levelList = LevelList.LEVEL_1;
                         levelList = levelList.whichLevel(level);
                         SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.pref_levels), Context.MODE_PRIVATE);
-                        System.out.println("koukou "+levelList.toString());
+
                         int levelSaved = sharedPref.getInt(levelList.toString(), -1);
                         int result = level.getResult(gameView.getNbClicks());
+
+                        nbClickTextView.setText(""+gameView.getNbClicks());
+                        switch(result) {
+                            case 1:
+                                resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillBronze, null));
+                                break;
+                            case 2:
+                                resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillSilver, null));
+                                break;
+                            case 3:
+                                resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
+                                break;
+                            default:
+                                resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillClear, null));
+                        }
+
                         if (result>levelSaved || levelSaved == -1) {
                             SharedPreferences.Editor editor = sharedPref.edit();
                             editor.putInt(levelList.toString(), result);

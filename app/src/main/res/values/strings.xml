@@ -15,4 +15,5 @@
     <string name="rules">Regles</string>
     <string name="rulesText">123</string>
     <string name="author">Auteur</string>
+    <string name="reset">Réinitialiser</string>
 </resources>

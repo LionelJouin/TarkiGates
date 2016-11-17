@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="building">#bdc3c7</color>
+    <color name="buildingDark">#8f9599</color>
 
     <color name="windowOn">#f39c12</color>
     <color name="windowTextOn">#f1c40f</color>
@@ -18,4 +19,9 @@
     <color name="sillBronze">#FB2E01</color>
     <color name="sillSilver">#FFE28A</color>
     <color name="sillGold">#6FCB9F</color>
+
+    <color name="textPause">#141414</color>
+
+    <color name="wire">#ecf0f1</color>
+    <color name="wireActivated">#e74c3c</color>
 </resources>

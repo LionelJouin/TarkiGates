@@ -42,23 +42,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/textView"
+            android:textColor="@color/textPause"
             android:textAlignment="center"
             android:fontFamily="sans-serif"
             android:textStyle="normal|bold" />
         <Button
             android:text="@string/resume"
+            android:background="@color/buildingDark"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/resume" />
         <Button
             android:text="@string/settings"
+            android:background="@color/buildingDark"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/settings" />
         <Button
             android:text="@string/gotohome"
+            android:background="@color/buildingDark"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -83,6 +87,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
             android:id="@+id/textView2"
+            android:textColor="@color/textPause"
             android:textAlignment="center"
             android:fontFamily="sans-serif"
             android:textStyle="normal|bold" />
@@ -96,6 +101,7 @@
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textPause"
                 android:id="@+id/nbclickText"
                 android:textAlignment="center"
                 android:fontFamily="sans-serif"
@@ -105,6 +111,7 @@
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/textPause"
                 android:id="@+id/nbclick"
                 android:layout_alignParentRight="true"
                 android:fontFamily="sans-serif"
@@ -118,21 +125,20 @@
             <TextView
                 android:text="@string/result"
                 android:textSize="15sp"
+                android:textColor="@color/textPause"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/resultText"
                 android:textAlignment="center"
                 android:fontFamily="sans-serif"
                 android:textStyle="normal|bold" />
-            <TextView
-                android:text="GREEN"
-                android:textSize="15sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/result"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="20sp"
+                android:layout_height="20sp"
                 android:layout_alignParentRight="true"
-                android:fontFamily="sans-serif"
-                android:textStyle="normal|bold" />
+                android:id="@+id/result"
+                android:background="@color/sillGold"/>
         </RelativeLayout>
         <LinearLayout
             android:orientation="horizontal"
