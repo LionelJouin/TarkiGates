@@ -162,7 +162,7 @@ public class Game extends Page {
             gameView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
 
             wv.setInitialScale(100);
-            wv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
+            wv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
 
             wv.addView(gameView);
 
@@ -174,6 +174,8 @@ public class Game extends Page {
                     if (state) {
                         finishGameMenu.setVisibility(gameView.VISIBLE);
                         gameView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOn, null));
+                        wv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOn, null));
+                        gameView.switchLightUI(true);
                         // SAVE
                         LevelList levelList = LevelList.LEVEL_1;
                         levelList = levelList.whichLevel(level);
@@ -208,6 +210,8 @@ public class Game extends Page {
                     } else {
                         finishGameMenu.setVisibility(gameView.INVISIBLE);
                         gameView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
+                        wv.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
+                        gameView.switchLightUI(false);
                         if (gameView != null)
                             gameView.setListenerState(true);
                     }

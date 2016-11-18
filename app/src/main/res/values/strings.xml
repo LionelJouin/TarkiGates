@@ -13,7 +13,10 @@
     <string name="doubleBackToExit">Cliquez à nouveau sur RETOUR pour quitter</string>
     <string name="informations">Créé par : Lionel JOUIN\nEtudiant à L\'IUT de Laval\n2015 - 2017</string>
     <string name="rules">Regles</string>
-    <string name="rulesText">123</string>
+    <string name="rulesText">Toutes les lumières du building se sont éteintes,
+        votre objectif est de les rallumer grâce aux interrupteurs présents dans chaque niveau.
+        \n\nLe courant passant à travers des portes logiques, votre objectif sera donc de trouver la bonne combinaison
+        d\’état des interrupteurs afin de rétablir la lumière dans le building.</string>
     <string name="author">Auteur</string>
     <string name="reset">Réinitialiser</string>
 </resources>

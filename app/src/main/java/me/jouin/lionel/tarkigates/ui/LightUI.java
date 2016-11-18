@@ -32,7 +32,7 @@ public class LightUI extends ComponentUI {
         super(x, y);
         height = Positions.getInstance().lightSize;
         width = Positions.getInstance().lightSize;
-        imgId = R.drawable.light;
+        imgId = R.drawable.lightoff;
         imgIdActivated = R.drawable.light;
         inX = width/2;
         inY = height;
@@ -82,6 +82,16 @@ public class LightUI extends ComponentUI {
         componentImageView.setImageBitmap(bmp);
         componentImageView.setX(x);
         componentImageView.setY(y);
+    }
+
+    public void switchLight(Context context, boolean state) {
+        Bitmap bmp;
+        if (state)
+            bmp = BitmapFactory.decodeResource(context.getResources(), imgIdActivated);
+        else
+            bmp = BitmapFactory.decodeResource(context.getResources(), imgId);
+        bmp = Bitmap.createScaledBitmap(bmp, width, height, true);
+        componentImageView.setImageBitmap(bmp);
     }
 
 }

@@ -50,6 +50,8 @@ public class GameView extends RelativeLayout {
     private Map<Integer, Integer> heightBottomColumns;
     private List<Component> alreadyChecked;
 
+    private LightUI lightUI;
+
     private Map<Component, ComponentUI> components;
 
     private LayoutParams thisLayoutParams;
@@ -99,7 +101,7 @@ public class GameView extends RelativeLayout {
     }
 
     private void setLight(final Light light) {
-        LightUI lightUI = new LightUI(Positions.getInstance().lightX, Positions.getInstance().lightY);
+        lightUI = new LightUI(Positions.getInstance().lightX, Positions.getInstance().lightY);
 
         lightUI.setView(context);
 
@@ -350,6 +352,7 @@ public class GameView extends RelativeLayout {
     }
 
     public void positioning() {
+        removeAllViews();
         for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
             addView(c.getValue().getView());
         }
@@ -401,11 +404,13 @@ public class GameView extends RelativeLayout {
         return nbClicks;
     }
 
+    public void switchLightUI(boolean state) {
+        lightUI.switchLight(context, state);
+    }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        wv.reload();
-        wv.onResume();
     }
 
 }
