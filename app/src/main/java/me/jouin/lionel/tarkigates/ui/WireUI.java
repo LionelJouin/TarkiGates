@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.jouin.lionel.tarkigates.Colors;
+import me.jouin.lionel.tarkigates.Resources;
 
 /**
  * Created by lione on 06/11/2016.
@@ -23,8 +23,8 @@ public class WireUI {
 
     public int wireThickness = 5;
 
-    public int color = Colors.getInstance().wire;
-    public int colorActivated = Colors.getInstance().wireActivated;
+    public int color = Resources.getInstance().wire;
+    public int colorActivated = Resources.getInstance().wireActivated;
 
     public int startX;
     public int startY;

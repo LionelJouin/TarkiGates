@@ -1,8 +1,9 @@
 package me.jouin.lionel.tarkigates.ui;
 
 import android.content.Context;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
 
 import me.jouin.lionel.tarkigates.Positions;
 import me.jouin.lionel.tarkigates.R;
@@ -13,14 +14,14 @@ import me.jouin.lionel.tarkigates.R;
 
 public class SwitchUI extends ComponentUI {
 
-    public Button switchButton;
+    public ImageView switchButton;
 
     public SwitchUI(int x, int y) {
         super(x, y);
         height = Positions.getInstance().switchSize;
         width = Positions.getInstance().switchSize;
-        imgId = R.drawable.switch_button;
-        imgIdActivated = R.drawable.switch_button;
+        imgId = R.drawable.switchoff;
+        imgIdActivated = R.drawable.switchon;
         outX = width;
         outY = height/2;
     }
@@ -36,16 +37,29 @@ public class SwitchUI extends ComponentUI {
     public void addWires(int startX, int startY) {}
 
     @Override
-    public Button getView() {
+    public ImageView getView() {
         return switchButton;
     }
 
     @Override
     public void setView(Context context) {
-        switchButton = new Button(context);
-        switchButton.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
+        switchButton = new ImageView(context);
+        Bitmap bmp = BitmapFactory.decodeResource(context.getResources(), imgId);
+        bmp = Bitmap.createScaledBitmap(bmp, width, height, true);
+        switchButton.setImageBitmap(bmp);
+        //switchButton.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
         switchButton.setY(y);
         switchButton.setX(x);
-        switchButton.setText("k");
+        //switchButton.setText("k");
+    }
+
+    public void switchSwitch(Context context, boolean state) {
+        Bitmap bmp;
+        if (state)
+            bmp = BitmapFactory.decodeResource(context.getResources(), imgIdActivated);
+        else
+            bmp = BitmapFactory.decodeResource(context.getResources(), imgId);
+        bmp = Bitmap.createScaledBitmap(bmp, width, height, true);
+        switchButton.setImageBitmap(bmp);
     }
 }

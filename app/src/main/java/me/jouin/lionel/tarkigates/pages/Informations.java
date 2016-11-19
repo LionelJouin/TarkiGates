@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import me.jouin.lionel.tarkigates.R;
+import me.jouin.lionel.tarkigates.Resources;
 
 /**
  * Created by lione on 12/11/2016.
@@ -32,6 +33,7 @@ public class Informations extends Page {
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 changePage(PageName.HOME);
             }
         });

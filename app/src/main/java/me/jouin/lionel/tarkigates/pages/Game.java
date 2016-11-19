@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import me.jouin.lionel.tarkigates.Positions;
 import me.jouin.lionel.tarkigates.R;
+import me.jouin.lionel.tarkigates.Resources;
 import me.jouin.lionel.tarkigates.core.LightListener;
 import me.jouin.lionel.tarkigates.levels.Level;
 import me.jouin.lionel.tarkigates.levels.LevelList;
@@ -66,6 +67,7 @@ public class Game extends Page {
             @Override
             public void onClick(View view) {
                 if (gameView != null && gameView.getListenerState()) {
+                    Resources.getInstance().playClickSound();
                     pauseMenu.setVisibility(view.VISIBLE);
                     gameView.setListenerState(false);
                 }
@@ -74,6 +76,7 @@ public class Game extends Page {
         resumeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 pauseMenu.setVisibility(view.INVISIBLE);
                 if (gameView != null)
                     gameView.setListenerState(true);
@@ -82,6 +85,7 @@ public class Game extends Page {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 changePage(PageName.SETTINGS);
                 if (gameView != null)
                     gameView.setListenerState(true);
@@ -90,6 +94,7 @@ public class Game extends Page {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 changePage(PageName.HOME);
                 if (gameView != null)
                     gameView.setListenerState(true);
@@ -100,6 +105,7 @@ public class Game extends Page {
         homeButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 changePage(PageName.HOME);
                 if (gameView != null)
                     gameView.setListenerState(true);
@@ -108,6 +114,7 @@ public class Game extends Page {
         replayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 if (level != null) {
                     LevelList levelList = LevelList.LEVEL_1;
                     levelList = levelList.whichLevel(level);
@@ -124,6 +131,7 @@ public class Game extends Page {
         continuerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 if (level != null) {
                     LevelList levelList = LevelList.LEVEL_1;
                     levelList = levelList.nextLevel(levelList.whichLevel(level));

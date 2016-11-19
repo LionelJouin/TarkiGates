@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import me.jouin.lionel.tarkigates.Positions;
+import me.jouin.lionel.tarkigates.Resources;
 import me.jouin.lionel.tarkigates.core.Component;
 import me.jouin.lionel.tarkigates.core.Light;
 import me.jouin.lionel.tarkigates.core.Switch;
@@ -60,7 +61,7 @@ public class GameView extends RelativeLayout {
 
     private boolean listenerState = true;
 
-    public GameView(Context context, Level level, WebView wv) {
+    public GameView(final Context context, Level level, WebView wv) {
         super(context);
         this.level = level;
         this.context = context;
@@ -74,14 +75,16 @@ public class GameView extends RelativeLayout {
 
         for (Map.Entry<Component, ComponentUI> c : components.entrySet()) {
             if (c.getKey() instanceof Switch) {
-                SwitchUI sUI = (SwitchUI) c.getValue();
+                final SwitchUI sUI = (SwitchUI) c.getValue();
                 final Switch key = (Switch) c.getKey();
                 sUI.switchButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (listenerState) {
+                            Resources.getInstance().playSwitchSound();
                             nbClicks++;
                             key.changeState();
+                            sUI.switchSwitch(context, key.out());
                             invalidate();
                         }
                     }

@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Random;
 
 import me.jouin.lionel.tarkigates.R;
+import me.jouin.lionel.tarkigates.Resources;
 import me.jouin.lionel.tarkigates.levels.LevelList;
 
 /**
@@ -81,6 +82,7 @@ public class Home extends Page {
             window.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Resources.getInstance().playClickSound();
                     changeLevel(levelList);
                     changePage(PageName.GAME);
                 }
@@ -113,6 +115,7 @@ public class Home extends Page {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 changePage(PageName.SETTINGS);
             }
         });
@@ -121,6 +124,7 @@ public class Home extends Page {
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 changePage(PageName.INFORMATIONS);
             }
         });

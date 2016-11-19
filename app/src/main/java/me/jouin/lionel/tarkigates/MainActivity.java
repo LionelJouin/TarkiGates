@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
 
         Positions.getInstance(this);
-        Colors.getInstance(this);
+        Resources.getInstance(this);
 
     }
 

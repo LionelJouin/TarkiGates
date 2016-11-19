@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import me.jouin.lionel.tarkigates.R;
+import me.jouin.lionel.tarkigates.Resources;
 import me.jouin.lionel.tarkigates.levels.LevelList;
 
 /**
@@ -37,6 +38,7 @@ public class Settings extends Page {
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 changePage(PageName.HOME);
             }
         });
@@ -44,6 +46,7 @@ public class Settings extends Page {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Resources.getInstance().playClickSound();
                 SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.pref_levels), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 for (final LevelList levelList : LevelList.values()) {
