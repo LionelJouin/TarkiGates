@@ -70,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
         changePage(PageName.HOME);
 
+        Resources.getInstance(this);
+
+        Resources.getInstance().playBackgroundMusic(true);
+
     }
 
     public void changePage(PageName pageName) {
@@ -86,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
 
         Positions.getInstance(this);
-        Resources.getInstance(this);
 
     }
 

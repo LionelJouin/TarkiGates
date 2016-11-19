@@ -1,7 +1,6 @@
 package me.jouin.lionel.tarkigates.ui;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
@@ -409,11 +408,6 @@ public class GameView extends RelativeLayout {
 
     public void switchLightUI(boolean state) {
         lightUI.switchLight(context, state);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
     }
 
 }

@@ -19,6 +19,15 @@
         d\’état des interrupteurs afin de rétablir la lumière dans le building.</string>
     <string name="author">Auteur</string>
 
+    <string name="pref_settings">settings</string>
+    <string name="pref_music">music</string>
+    <string name="pref_soundEffects">soundEffects</string>
+    <string name="pref_orientation">orientation</string>
+    <string name="needRestart">L\'application a besoin de redémarrer pour appliquer certains paramètres</string>
+    <string name="saved">Sauvegardé</string>
+    <string name="upToDate">À jour</string>
+    <string name="orientation">Orientation</string>
+    <string name="music">Activer la musique</string>
     <string name="soundEffects">Activer les bruitages</string>
     <string name="reset">Réinitialiser</string>
 </resources>
