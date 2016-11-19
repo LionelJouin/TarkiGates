@@ -18,5 +18,7 @@
         \n\nLe courant passant à travers des portes logiques, votre objectif sera donc de trouver la bonne combinaison
         d\’état des interrupteurs afin de rétablir la lumière dans le building.</string>
     <string name="author">Auteur</string>
+
+    <string name="soundEffects">Activer les bruitages</string>
     <string name="reset">Réinitialiser</string>
 </resources>

@@ -62,17 +62,29 @@
                 android:background="@color/sillClear">
             </LinearLayout>
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:paddingTop="10dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:background="@color/building">
+
+                <Switch
+                    android:text="@string/soundEffects"
+                    android:textSize="17sp"
+                    android:textColor="@color/windowOff"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/switch1"
+                    android:layout_weight="1" />
+
                 <Button
                     android:text="@string/reset"
                     android:background="@color/buildingDark"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/reset"
                     android:layout_weight="1" />
