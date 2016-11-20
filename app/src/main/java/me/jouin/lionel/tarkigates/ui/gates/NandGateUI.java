@@ -12,7 +12,7 @@ public class NandGateUI extends LogicGateUI {
         super(x, y);
         imgId = R.drawable.nand;
         imgIdActivated = R.drawable.nand;
-        outX = (int) Math.round(width*0.73);
+        outX = (int) Math.round(width*0.81);
     }
 
 }
