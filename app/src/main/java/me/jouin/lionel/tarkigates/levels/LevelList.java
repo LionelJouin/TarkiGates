@@ -5,7 +5,7 @@ package me.jouin.lionel.tarkigates.levels;
  */
 
 public enum LevelList {
-    LEVEL_1(1), LEVEL_2(2), LEVEL_3(3), LEVEL_4(4), LEVEL_5(5);
+    LEVEL_1(1), LEVEL_2(2), LEVEL_3(3), LEVEL_4(4), LEVEL_5(5), LEVEL_6(6), LEVEL_7(7), LEVEL_8(8), LEVEL_9(9), LEVEL_10(10), LEVEL_11(11), LEVEL_12(12);
 
     int number;
     LevelList(int n) {
@@ -28,6 +28,20 @@ public enum LevelList {
                 return new Level_4();
             case LEVEL_5:
                 return new Level_5();
+            case LEVEL_6:
+                return new Level_6();
+            case LEVEL_7:
+                return new Level_7();
+            case LEVEL_8:
+                return new Level_8();
+            case LEVEL_9:
+                return new Level_9();
+            case LEVEL_10:
+                return new Level_10();
+            case LEVEL_11:
+                return new Level_11();
+            case LEVEL_12:
+                return new Level_12();
             default:
                 return null;
         }
@@ -44,6 +58,20 @@ public enum LevelList {
             return LEVEL_4;
         if (level instanceof Level_5)
             return LEVEL_5;
+        if (level instanceof Level_6)
+            return LEVEL_6;
+        if (level instanceof Level_7)
+            return LEVEL_7;
+        if (level instanceof Level_8)
+            return LEVEL_8;
+        if (level instanceof Level_9)
+            return LEVEL_9;
+        if (level instanceof Level_10)
+            return LEVEL_10;
+        if (level instanceof Level_11)
+            return LEVEL_11;
+        if (level instanceof Level_12)
+            return LEVEL_12;
         else
             return null;
     }

@@ -39,6 +39,8 @@ public class Settings extends Page {
         Switch music = (Switch) root.findViewById(R.id.music);
         Switch soundeffect = (Switch) root.findViewById(R.id.soundeffect);
 
+        infos.setText(getString(R.string.upToDate));
+
         SharedPreferences sharedPref = getActivity().getSharedPreferences(getString(R.string.pref_settings), Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPref.edit();
         boolean prefMusic = sharedPref.getBoolean(getString(R.string.pref_music), true);

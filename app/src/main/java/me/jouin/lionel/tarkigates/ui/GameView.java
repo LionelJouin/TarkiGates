@@ -168,7 +168,7 @@ public class GameView extends RelativeLayout {
                     LogicGate componentBeforeLogicGate = (LogicGate) componentBefore;
                     LogicGateUI componentBeforeLogicGateUI = (LogicGateUI) components.get(componentBeforeLogicGate);
                     if (c.equals(componentBeforeLogicGate.getInA()))
-                        y = componentBeforeLogicGateUI.getInAX();
+                        y = componentBeforeLogicGateUI.getInAY();
                     else if (c.equals(componentBeforeLogicGate.getInB()))
                         y = componentBeforeLogicGateUI.getInBY();
                 } else if (componentBefore instanceof NotGate) {

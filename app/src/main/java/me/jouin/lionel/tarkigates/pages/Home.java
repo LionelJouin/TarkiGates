@@ -45,7 +45,7 @@ public class Home extends Page {
 
         buttonsPlay = new HashMap<>();
 
-        int i = 0;
+        int i = 1;
         LinearLayout floorWindow = new LinearLayout(root.getContext());
         LinearLayout floorWindowSill = new LinearLayout(root.getContext());
 
@@ -55,7 +55,7 @@ public class Home extends Page {
 
         for (final LevelList levelList : LevelList.values()) {
             int levelSaved = sharedPref.getInt(levelList.toString(), 0);
-            if (i%3 == 0) {
+            if ((i-1)%3 == 0) {
                 floorWindow = new LinearLayout(root.getContext());
                 floorWindowSill = new LinearLayout(root.getContext());
                 floorWindow.setOrientation(LinearLayout.HORIZONTAL);

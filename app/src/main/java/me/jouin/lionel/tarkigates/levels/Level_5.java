@@ -17,8 +17,8 @@ public class Level_5 extends Level {
         super(new Light());
 
         result[0] = 2;
-        result[1] = 3;
-        result[2] = 4;
+        result[1] = 4;
+        result[2] = 6;
 
         Switch s1 = new Switch();
         Switch s2 = new Switch();
@@ -27,22 +27,19 @@ public class Level_5 extends Level {
         LogicGate g2 = new OrGate();
         LogicGate g3 = new AndGate();
         NotGate n1 = new NotGate();
-        NotGate n2 = new NotGate();
         Light l = new Light();
 
-        n2.setIn(s2);
+        n1.setIn(s2);
 
         g1.setInA(s1);
-        g1.setInB(n2);
+        g1.setInB(n1);
         g2.setInA(s2);
         g2.setInB(s3);
 
         g3.setInA(g1);
         g3.setInB(g2);
 
-        n1.setIn(g3);
-
-        l.setIn(n1);
+        l.setIn(g3);
 
         setLight(l);
 
