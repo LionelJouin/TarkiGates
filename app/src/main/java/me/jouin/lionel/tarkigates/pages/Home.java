@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,13 +28,14 @@ import me.jouin.lionel.tarkigates.levels.LevelList;
 public class Home extends Page {
 
     private Map<Button, LevelList> buttonsPlay;
+    private ViewGroup root;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_home, container, false);
+        root = (ViewGroup) inflater.inflate(R.layout.fragment_home, container, false);
         //ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_home, null);
 
-        LinearLayout homeLayout = (LinearLayout) root.findViewById(R.id.home);
+        RelativeLayout homeLayout = (RelativeLayout) root.findViewById(R.id.home);
         LinearLayout buildingLayout = (LinearLayout) root.findViewById(R.id.building);
 
         int[] colors = {ResourcesCompat.getColor(getResources(), R.color.skyStart, null), ResourcesCompat.getColor(getResources(), R.color.skyEnd, null)};

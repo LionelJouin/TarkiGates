@@ -34,6 +34,7 @@ public class Resources {
         wireActivated = ResourcesCompat.getColor(mainActivity.getResources(), R.color.wireActivated, null);
 
         backgroundMusic = new BackgroundMusic();
+        backgroundMusic.execute();
     }
 
     public static Resources getInstance(MainActivity mainActivity) {
@@ -58,31 +59,41 @@ public class Resources {
     }
 
     public void playBackgroundMusic(boolean b) {
-        System.out.println("koukou abc");
         if (backgroundMusic != null) {
             if (b) {
-                System.out.println("koukou "+backgroundMusic.getStatus());
-                if (backgroundMusic.getStatus() != AsyncTask.Status.RUNNING)
-                    backgroundMusic.execute();
+                backgroundMusic.start();
             } else {
-                System.out.println("koukou");
                 backgroundMusic.cancel(true);
+                backgroundMusic.stop();
             }
         }
     }
 
     public class BackgroundMusic extends AsyncTask<Void, Void, Void> {
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            MediaPlayer player = MediaPlayer.create(mainActivity, R.raw.music);
+        private boolean running = true;
+        private MediaPlayer player;
+
+        public BackgroundMusic() {
+            super();
+            player = MediaPlayer.create(mainActivity.getApplicationContext(), R.raw.music);
             player.setLooping(true);
             player.setVolume(1.0f, 1.0f);
-            player.start();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
 
             return null;
         }
 
+        public void start(){
+            player.start();
+        }
+
+        public void stop(){
+            player.pause();
+        }
     }
 
 }

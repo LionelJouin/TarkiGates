@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import me.jouin.lionel.tarkigates.R;
 import me.jouin.lionel.tarkigates.Resources;
@@ -22,7 +22,7 @@ public class Informations extends Page {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_informations, container, false);
 
-        LinearLayout informationsLayout = (LinearLayout) root.findViewById(R.id.informations);
+        RelativeLayout informationsLayout = (RelativeLayout) root.findViewById(R.id.informations);
         ImageView backImageView = (ImageView) root.findViewById(R.id.back);
 
         int[] colors = {ResourcesCompat.getColor(getResources(), R.color.skyStart, null), ResourcesCompat.getColor(getResources(), R.color.skyEnd, null)};

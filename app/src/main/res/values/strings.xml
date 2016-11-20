@@ -5,13 +5,15 @@
     <string name="resume">Reprendre</string>
     <string name="settings">Options</string>
     <string name="gotohome">Revenir au menu principal</string>
+    <string name="loading">Chargement ...</string>
     <string name="pause">PAUSE</string>
     <string name="continuer">continuer</string>
     <string name="win">BIEN JOUÉ !</string>
     <string name="nbclicks">Nombre de clicks</string>
     <string name="result">Resultat</string>
     <string name="doubleBackToExit">Cliquez à nouveau sur RETOUR pour quitter</string>
-    <string name="informations">Créé par : Lionel JOUIN\nEtudiant à L\'IUT de Laval\n2015 - 2017</string>
+
+    <string name="informations">Créé par : Lionel JOUIN\nEtudiant à L\'IUT de Laval\n2015 - 2017\n\nMusique : Lou Angel Movie Music - RUSH (Video Game) Musique Reflexion Loop</string>
     <string name="rules">Regles</string>
     <string name="rulesText">Toutes les lumières du building se sont éteintes,
         votre objectif est de les rallumer grâce aux interrupteurs présents dans chaque niveau.

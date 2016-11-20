@@ -20,19 +20,15 @@ import me.jouin.lionel.tarkigates.pages.Settings;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*
-    private GameView gameView;
-    private Level level;
-    private WebView wv;
-    */
-
     private FragmentTransaction tx;
+
     private Home home;
     private Game game;
     private Settings settings;
     private Informations informations;
     private Map<PageName, Page> pages;
     private PageName pageActuel;
+
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -40,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
-        //level = new Level_3();
 
         home = new Home();
         game = new Game();
@@ -76,6 +70,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Resources.getInstance().playBackgroundMusic(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Resources.getInstance().playBackgroundMusic(false);
+    }
+
     public void changePage(PageName pageName) {
         if (pages.containsKey(pageName)) {
             pageActuel = pageName;
@@ -90,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
 
         Positions.getInstance(this);
-
     }
 
     @Override

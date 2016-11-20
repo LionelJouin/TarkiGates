@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -30,7 +30,7 @@ public class Settings extends Page {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_settings, container, false);
 
-        LinearLayout settingsLayout = (LinearLayout) root.findViewById(R.id.settings);
+        RelativeLayout settingsLayout = (RelativeLayout) root.findViewById(R.id.settings);
         ImageView backImageView = (ImageView) root.findViewById(R.id.back);
 
         final TextView infos = (TextView) root.findViewById(R.id.infos);
