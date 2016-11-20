@@ -159,6 +159,7 @@
             <ImageView
                 android:layout_weight="0.3"
                 android:layout_width="0dp"
+                android:visibility="visible"
                 app:srcCompat="@drawable/play"
                 android:layout_height="50dp"
                 android:id="@+id/continuer" />

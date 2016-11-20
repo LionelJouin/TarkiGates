@@ -37,6 +37,7 @@ public class Game extends Page {
     private LinearLayout pauseMenu;
     private TextView nbClickTextView;
     private LinearLayout resultLinearLayout;
+    private ImageView continuerButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class Game extends Page {
 
         finishGameMenu = (LinearLayout) root.findViewById(R.id.finishGame);
 
-        ImageView continuerButton = (ImageView) root.findViewById(R.id.continuer);
+        continuerButton = (ImageView) root.findViewById(R.id.continuer);
         ImageView replayButton = (ImageView) root.findViewById(R.id.replay);
         ImageView homeButton2 = (ImageView) root.findViewById(R.id.gotohome2);
 
@@ -195,15 +196,19 @@ public class Game extends Page {
                         nbClickTextView.setText(""+gameView.getNbClicks());
                         switch(result) {
                             case 1:
+                                continuerButton.setVisibility(View.VISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillBronze, null));
                                 break;
                             case 2:
+                                continuerButton.setVisibility(View.VISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillSilver, null));
                                 break;
                             case 3:
+                                continuerButton.setVisibility(View.VISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
                                 break;
                             default:
+                                continuerButton.setVisibility(View.INVISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillClear, null));
                         }
 

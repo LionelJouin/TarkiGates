@@ -5,7 +5,11 @@ package me.jouin.lionel.tarkigates.levels;
  */
 
 public enum LevelList {
-    LEVEL_1(1), LEVEL_2(2), LEVEL_3(3), LEVEL_4(4), LEVEL_5(5), LEVEL_6(6), LEVEL_7(7), LEVEL_8(8), LEVEL_9(9), LEVEL_10(10), LEVEL_11(11), LEVEL_12(12);
+    LEVEL_1(1), LEVEL_2(2), LEVEL_3(3),
+    LEVEL_4(4), LEVEL_5(5), LEVEL_6(6),
+    LEVEL_7(7), LEVEL_8(8), LEVEL_9(9),
+    LEVEL_10(10), LEVEL_11(11), LEVEL_12(12),
+    LEVEL_13(13), LEVEL_14(14), LEVEL_15(15);
 
     int number;
     LevelList(int n) {
@@ -42,6 +46,12 @@ public enum LevelList {
                 return new Level_11();
             case LEVEL_12:
                 return new Level_12();
+            case LEVEL_13:
+                return new Level_13();
+            case LEVEL_14:
+                return new Level_14();
+            case LEVEL_15:
+                return new Level_15();
             default:
                 return null;
         }
@@ -72,6 +82,12 @@ public enum LevelList {
             return LEVEL_11;
         if (level instanceof Level_12)
             return LEVEL_12;
+        if (level instanceof Level_13)
+            return LEVEL_13;
+        if (level instanceof Level_14)
+            return LEVEL_14;
+        if (level instanceof Level_15)
+            return LEVEL_15;
         else
             return null;
     }
@@ -79,6 +95,13 @@ public enum LevelList {
     public LevelList nextLevel(LevelList levelList) {
         for(LevelList l : LevelList.values()){
             if(levelList.getNumber() == l.getNumber()-1) return l;
+        }
+        return null;
+    }
+
+    public LevelList previousLevel(LevelList levelList) {
+        for(LevelList l : LevelList.values()){
+            if(levelList.getNumber() == l.getNumber()+1) return l;
         }
         return null;
     }

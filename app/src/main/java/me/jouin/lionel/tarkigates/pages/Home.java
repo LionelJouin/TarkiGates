@@ -55,6 +55,11 @@ public class Home extends Page {
 
         for (final LevelList levelList : LevelList.values()) {
             int levelSaved = sharedPref.getInt(levelList.toString(), 0);
+            LevelList previousLevel = levelList.previousLevel(levelList);
+            System.out.println("koukou "+previousLevel);
+            int previousLevelSaved = 1;
+            if (previousLevel != null)
+                previousLevelSaved = sharedPref.getInt(previousLevel.toString(), 0);
             if ((i-1)%3 == 0) {
                 floorWindow = new LinearLayout(root.getContext());
                 floorWindowSill = new LinearLayout(root.getContext());
@@ -73,7 +78,11 @@ public class Home extends Page {
                 window.setTextColor(ResourcesCompat.getColor(getResources(), R.color.windowTextOn, null));
                 window.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOn, null));
             } else {
-                window.setTextColor(ResourcesCompat.getColor(getResources(), R.color.windowTextOff, null));
+                if (previousLevelSaved > 0) {
+                    window.setTextColor(ResourcesCompat.getColor(getResources(), R.color.windowTextOff, null));
+                } else {
+                    window.setTextColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
+                }
                 window.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.windowOff, null));
             }
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
@@ -81,14 +90,16 @@ public class Home extends Page {
             window.setLayoutParams(params);
             buttonsPlay.put(window, levelList);
             floorWindow.addView(window);
-            window.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Resources.getInstance().playClickSound();
-                    changeLevel(levelList);
-                    changePage(PageName.GAME);
-                }
-            });
+            if (previousLevelSaved > 0) {
+                window.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Resources.getInstance().playClickSound();
+                        changeLevel(levelList);
+                        changePage(PageName.GAME);
+                    }
+                });
+            }
 
             LinearLayout windowSill = new LinearLayout(root.getContext());
             params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 35, 1f);
