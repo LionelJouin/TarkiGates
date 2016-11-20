@@ -81,7 +81,7 @@
                     android:layout_weight="1" />
                 <TextView
                     android:text="@string/informations"
-                    android:textSize="15sp"
+                    android:textSize="17sp"
                     android:textColor="@color/windowOff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

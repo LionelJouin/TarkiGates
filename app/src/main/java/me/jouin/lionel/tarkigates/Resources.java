@@ -16,6 +16,8 @@ public class Resources {
     public int wire;
     public int wireActivated = Color.parseColor("#e74c3c");
 
+    public boolean soundEffect = true;
+
     private MediaPlayer switchClick;
     private MediaPlayer click;
 
@@ -52,10 +54,16 @@ public class Resources {
     }
 
     public void playSwitchSound() {
-        switchClick.start();
+        if (soundEffect)
+            switchClick.start();
     }
     public void playClickSound() {
-        click.start();
+        if (soundEffect)
+            click.start();
+    }
+
+    public void setVolume() {
+        backgroundMusic.setVolume();
     }
 
     public void playBackgroundMusic(boolean b) {
@@ -71,23 +79,25 @@ public class Resources {
 
     public class BackgroundMusic extends AsyncTask<Void, Void, Void> {
 
-        private boolean running = true;
         private MediaPlayer player;
 
         public BackgroundMusic() {
             super();
             player = MediaPlayer.create(mainActivity.getApplicationContext(), R.raw.music);
             player.setLooping(true);
-            player.setVolume(1.0f, 1.0f);
+            player.setVolume(0f, 0f);
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-
             return null;
         }
 
-        public void start(){
+        public void setVolume() {
+            player.setVolume(1.0f, 1.0f);
+        }
+
+        public void start() {
             player.start();
         }
 

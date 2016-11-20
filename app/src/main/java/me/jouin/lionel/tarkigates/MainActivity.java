@@ -1,5 +1,8 @@
 package me.jouin.lionel.tarkigates;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
@@ -68,12 +71,25 @@ public class MainActivity extends AppCompatActivity {
 
         Resources.getInstance().playBackgroundMusic(true);
 
+        super.onStart();
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.pref_settings), Context.MODE_PRIVATE);
+        boolean prefSoundEffects = sharedPref.getBoolean(getString(R.string.pref_soundEffects), true);
+        int prefOrientation = sharedPref.getInt(getString(R.string.pref_orientation), ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Resources.getInstance().soundEffect = prefSoundEffects;
+        if (prefOrientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        else
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Resources.getInstance().playBackgroundMusic(true);
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.pref_settings), Context.MODE_PRIVATE);
+        boolean prefMusic = sharedPref.getBoolean(getString(R.string.pref_music), true);
+        Resources.getInstance().playBackgroundMusic(prefMusic);
+        Resources.getInstance().setVolume();
     }
 
     @Override

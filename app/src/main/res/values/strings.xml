@@ -31,5 +31,6 @@
     <string name="orientation">Orientation</string>
     <string name="music">Activer la musique</string>
     <string name="soundEffects">Activer les bruitages</string>
-    <string name="reset">Réinitialiser</string>
+    <string name="reset">Réinitialiser les niveaux</string>
+    <string name="hasBeenReset">Les niveaux ont été Réinitialisés</string>
 </resources>

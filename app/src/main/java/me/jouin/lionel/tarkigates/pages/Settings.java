@@ -73,11 +73,11 @@ public class Settings extends Page {
                 if (prefOrientation[0] == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                     prefOrientation[0] = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                    orientation.setImageResource(R.drawable.landscape);
+                    orientation.setImageResource(R.drawable.portrait);
                 } else {
                     prefOrientation[0] = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                    orientation.setImageResource(R.drawable.portrait);
+                    orientation.setImageResource(R.drawable.landscape);
                 }
                 editor.putInt(getString(R.string.pref_orientation), prefOrientation[0]);
                 editor.commit();
@@ -88,8 +88,9 @@ public class Settings extends Page {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 infos.setText(getString(R.string.saved));
+                Resources.getInstance().playBackgroundMusic(b);
                 Resources.getInstance().playClickSound();
-                editor.putBoolean(getString(R.string.music), b);
+                editor.putBoolean(getString(R.string.pref_music), b);
                 editor.commit();
             }
         });
@@ -98,6 +99,7 @@ public class Settings extends Page {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 infos.setText(getString(R.string.saved));
+                Resources.getInstance().soundEffect = b;
                 Resources.getInstance().playClickSound();
                 editor.putBoolean(getString(R.string.pref_soundEffects), b);
                 editor.commit();
@@ -114,6 +116,7 @@ public class Settings extends Page {
                     editor.putInt(levelList.toString(), -1);
                     editor.commit();
                 }
+                infos.setText(getString(R.string.hasBeenReset));
             }
         });
 
