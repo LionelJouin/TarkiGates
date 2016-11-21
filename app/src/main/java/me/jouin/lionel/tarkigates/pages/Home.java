@@ -56,7 +56,6 @@ public class Home extends Page {
         for (final LevelList levelList : LevelList.values()) {
             int levelSaved = sharedPref.getInt(levelList.toString(), 0);
             LevelList previousLevel = levelList.previousLevel(levelList);
-            System.out.println("koukou "+previousLevel);
             int previousLevelSaved = 1;
             if (previousLevel != null)
                 previousLevelSaved = sharedPref.getInt(previousLevel.toString(), 0);

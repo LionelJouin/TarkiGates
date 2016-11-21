@@ -35,6 +35,7 @@ public class Game extends Page {
     private ViewGroup root;
     private LinearLayout finishGameMenu;
     private LinearLayout pauseMenu;
+    private TextView resultTextMSG;
     private TextView nbClickTextView;
     private LinearLayout resultLinearLayout;
     private ImageView continuerButton;
@@ -58,6 +59,7 @@ public class Game extends Page {
         ImageView replayButton = (ImageView) root.findViewById(R.id.replay);
         ImageView homeButton2 = (ImageView) root.findViewById(R.id.gotohome2);
 
+        resultTextMSG = (TextView) root.findViewById(R.id.resultTextMSG);
         nbClickTextView = (TextView) root.findViewById(R.id.nbclick);
         resultLinearLayout = (LinearLayout) root.findViewById(R.id.result);
 
@@ -196,18 +198,22 @@ public class Game extends Page {
                         nbClickTextView.setText(""+gameView.getNbClicks());
                         switch(result) {
                             case 1:
+                                resultTextMSG.setText(getString(R.string.textBronze));
                                 continuerButton.setVisibility(View.VISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillBronze, null));
                                 break;
                             case 2:
+                                resultTextMSG.setText(getString(R.string.textSilver));
                                 continuerButton.setVisibility(View.VISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillSilver, null));
                                 break;
                             case 3:
+                                resultTextMSG.setText(getString(R.string.textGold));
                                 continuerButton.setVisibility(View.VISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillGold, null));
                                 break;
                             default:
+                                resultTextMSG.setText(getString(R.string.textClear));
                                 continuerButton.setVisibility(View.INVISIBLE);
                                 resultLinearLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.sillClear, null));
                         }

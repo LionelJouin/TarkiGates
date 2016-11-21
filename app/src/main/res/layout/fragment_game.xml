@@ -78,13 +78,13 @@
         android:id="@+id/finishGame"
         android:visibility="invisible">
         <TextView
-            android:text="@string/win"
+            android:text="@string/textClear"
             android:textSize="30sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
-            android:id="@+id/textView2"
+            android:id="@+id/resultTextMSG"
             android:textColor="@color/textPause"
             android:textAlignment="center"
             android:fontFamily="sans-serif"

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Informations informations;
     private Map<PageName, Page> pages;
     private PageName pageActuel;
+    private PageName previousPage;
 
     private boolean doubleBackToExitPressedOnce = false;
 
@@ -65,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        changePage(PageName.HOME);
+        pageActuel = PageName.HOME;
+        changePage(pageActuel);
 
         Resources.getInstance(this);
 
@@ -100,10 +102,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void changePage(PageName pageName) {
         if (pages.containsKey(pageName)) {
-            pageActuel = pageName;
-            tx = getSupportFragmentManager().beginTransaction();
-            tx.replace(R.id.fragment, pages.get(pageName));
-            tx.commit();
+            if (pageActuel != PageName.SETTINGS) {
+                previousPage = pageActuel;
+                pageActuel = pageName;
+                tx = getSupportFragmentManager().beginTransaction();
+                tx.replace(R.id.fragment, pages.get(pageName));
+                tx.commit();
+            } else {
+                pageActuel = previousPage;
+                previousPage = PageName.SETTINGS;
+                tx = getSupportFragmentManager().beginTransaction();
+                tx.replace(R.id.fragment, pages.get(pageActuel));
+                tx.commit();
+            }
         }
     }
 

@@ -8,18 +8,36 @@
     <string name="loading">Chargement ...</string>
     <string name="pause">PAUSE</string>
     <string name="continuer">continuer</string>
-    <string name="win">BIEN JOUÉ !</string>
-    <string name="nbclicks">Nombre de clicks</string>
-    <string name="result">Resultat</string>
+    <string name="textClear">RÉESSAYEZ !</string>
+    <string name="textBronze">MOYEN</string>
+    <string name="textSilver">ASSEZ BIEN</string>
+    <string name="textGold">BIEN JOUÉ !</string>
+    <string name="nbclicks">Nombre de commutations</string>
+    <string name="result">Résultat</string>
     <string name="doubleBackToExit">Cliquez à nouveau sur RETOUR pour quitter</string>
 
-    <string name="informations">Créé par : Lionel JOUIN\nEtudiant à L\'IUT de Laval\n2015 - 2017\n\nMusique : Lou Angel Movie Music - RUSH (Video Game) Musique Reflexion Loop</string>
+    <string name="informations">Créé par : Lionel JOUIN\nEtudiant à L\'IUT de Laval\n2015 - 2017
+        \n\nMusique : Lou Angel Movie Music - RUSH (Video Game) Musique Reflexion Loop
+        \n\nIcones : flaticon.com
+    </string>
     <string name="rules">Regles</string>
     <string name="rulesText">Toutes les lumières du building se sont éteintes,
         votre objectif est de les rallumer grâce aux interrupteurs présents dans chaque niveau.
         \n\nLe courant passant à travers des portes logiques, votre objectif sera donc de trouver la bonne combinaison
         d\’état des interrupteurs afin de rétablir la lumière dans le building.</string>
     <string name="author">Auteur</string>
+    <string name="gates">Les portes</string>
+    <string name="s0">0</string>
+    <string name="s1">1</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="and">A et B</string>
+    <string name="or">A ou B</string>
+    <string name="not">Non A</string>
+    <string name="nand">A nand B</string>
+    <string name="nor">A nor B</string>
+    <string name="xor">A xor B</string>
+    <string name="xnor">A xnor B</string>
 
     <string name="pref_settings">settings</string>
     <string name="pref_music">music</string>

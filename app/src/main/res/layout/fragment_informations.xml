@@ -106,6 +106,969 @@
                     android:id="@+id/textView6"
                     android:layout_weight="1"
                     android:textAlignment="center" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <TextView
+                    android:text="@string/gates"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/windowOff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal|bold"
+                    android:layout_weight="1" />
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="0.5"
+                        app:srcCompat="@drawable/and" />
+
+                    <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:stretchColumns="*">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                        <TextView
+                            android:text="@string/a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textStyle="normal|bold"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textStyle="normal|bold"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/and"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textStyle="normal|bold"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                        <TextView
+                            android:text="@string/s0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                        <TextView
+                            android:text="@string/s0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                        <TextView
+                            android:text="@string/s1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                        <TextView
+                            android:text="@string/s1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:text="@string/s1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/windowOff"
+                            android:textAlignment="center" />
+                    </TableRow>
+                </TableLayout>
+                </LinearLayout>
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="0.5"
+                        app:srcCompat="@drawable/or" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/b"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/or"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="0.5"
+                        app:srcCompat="@drawable/not" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/not"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                    </TableLayout>
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="0.5"
+                        app:srcCompat="@drawable/nand" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/b"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/nand"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="0.5"
+                        app:srcCompat="@drawable/nor" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/b"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/nor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="0.5"
+                        app:srcCompat="@drawable/xor" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/b"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/xor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="0.5"
+                        app:srcCompat="@drawable/xnor" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:stretchColumns="*">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/b"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/xnor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textStyle="normal|bold"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                            <TextView
+                                android:text="@string/s1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/windowOff"
+                                android:textAlignment="center" />
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
                 <LinearLayout
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
